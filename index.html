@@ -1,2452 +1,293 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Mayur Pawar Edits | Professional Editing & Design</title>
-
-<meta name="description"
-content="Mayur Pawar Edits - Video Editing, Photo Editing, Advertisements, Logo Design, Business Posters and Thumbnails.">
-
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mayur Pawar Edits</title>
 <style>
-
-/* =========================
-   GLOBAL
-========================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#060b13;
-    color:#fff;
-    overflow-x:hidden;
-}
-
-button{
-    font-family:inherit;
-}
-
-a{
-    text-decoration:none;
-}
-
-/* =========================
-   NAVBAR
-========================= */
-
-nav{
-    position:sticky;
-    top:0;
-    z-index:1000;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:28px;
-
-    padding:14px 20px;
-
-    background:rgba(3,8,16,.94);
-    backdrop-filter:blur(18px);
-
-    border-bottom:1px solid #1c394c;
-}
-
-nav a{
-    color:#d7edf7;
-    font-weight:bold;
-    transition:.3s;
-}
-
-nav a:hover{
-    color:#45d8ff;
-}
-
-.cart-button{
-    position:relative;
-
-    border:0;
-    cursor:pointer;
-
-    padding:11px 20px;
-
-    color:white;
-    font-weight:bold;
-
-    border-radius:25px;
-
-    background:linear-gradient(
-        90deg,
-        #0077ff,
-        #00c6ff
-    );
-
-    transition:.3s;
-}
-
-.cart-button:hover{
-    transform:translateY(-2px);
-    box-shadow:0 0 25px #00aaff66;
-}
-
-.cart-count{
-    position:absolute;
-
-    top:-8px;
-    right:-8px;
-
-    width:24px;
-    height:24px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:#ff1744;
-
-    border-radius:50%;
-
-    font-size:12px;
-}
-
-/* =========================
-   HERO
-========================= */
-
-header{
-    min-height:92vh;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    padding:40px 20px;
-
-    background:
-    radial-gradient(
-        circle at 50% 15%,
-        #008dcc55,
-        transparent 35%
-    ),
-    radial-gradient(
-        circle at 20% 80%,
-        #0066ff33,
-        transparent 30%
-    ),
-    linear-gradient(
-        135deg,
-        #020711,
-        #101d2e
-    );
-}
-
-.hero{
-    max-width:900px;
-}
-
-.hero-logo{
-    width:190px;
-    height:190px;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
-    border:3px solid #8bdcff;
-
-    box-shadow:
-    0 0 25px #00c8ff88,
-    0 0 70px #0077ff44;
-
-    margin-bottom:25px;
-}
-
-.hero h1{
-    font-size:52px;
-
-    background:linear-gradient(
-        90deg,
-        #fff,
-        #5edfff,
-        #fff
-    );
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.tagline{
-    margin-top:12px;
-
-    font-size:21px;
-
-    color:#b9d5e8;
-}
-
-.hero-buttons{
-    margin-top:30px;
-
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:15px;
-}
-
-.btn{
-    display:inline-block;
-
-    padding:14px 26px;
-
-    border:0;
-
-    border-radius:30px;
-
-    background:linear-gradient(
-        90deg,
-        #0077ff,
-        #00c6ff
-    );
-
-    color:white;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.btn:hover{
-    transform:translateY(-3px);
-
-    box-shadow:
-    0 0 30px #00aaff88;
-}
-
-.btn-outline{
-    background:transparent;
-    border:1px solid #35cfff;
-}
-
-/* =========================
-   SECTION
-========================= */
-
-section{
-    padding:80px 20px;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:45px;
-}
-
-.section-title h2{
-    font-size:38px;
-    margin-bottom:10px;
-}
-
-.section-title p{
-    color:#8fa8b8;
-}
-
-/* =========================
-   ABOUT
-========================= */
-
-.about{
-    max-width:1000px;
-    margin:auto;
-
-    display:flex;
-    align-items:center;
-    gap:40px;
-
-    padding:40px;
-
-    border-radius:25px;
-
-    background:
-    linear-gradient(
-        145deg,
-        #0c1725,
-        #080f19
-    );
-
-    border:1px solid #1d3d51;
-}
-
-.about-logo{
-    width:170px;
-    height:170px;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
-    flex-shrink:0;
-}
-
-.about-text h3{
-    color:#55d9ff;
-
-    font-size:28px;
-
-    margin-bottom:15px;
-}
-
-.about-text p{
-    color:#c0d0da;
-
-    font-size:17px;
-
-    line-height:1.8;
-}
-
-/* =========================
-   SERVICES
-========================= */
-
-.services{
-    max-width:1200px;
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(250px,1fr));
-
-    gap:25px;
-}
-
-.card{
-    padding:30px 22px;
-
-    text-align:center;
-
-    border-radius:22px;
-
-    background:
-    linear-gradient(
-        145deg,
-        #101c2b,
-        #080e18
-    );
-
-    border:1px solid #20394b;
-
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-
-    border-color:#21cfff;
-
-    box-shadow:
-    0 15px 40px #008cff33;
-}
-
-.icon{
-    font-size:45px;
-    margin-bottom:18px;
-}
-
-.card h3{
-    font-size:21px;
-    margin-bottom:12px;
-}
-
-.card p{
-    min-height:55px;
-
-    color:#94a9b8;
-
-    line-height:1.5;
-}
-
-.price{
-    margin:18px 0 5px;
-
-    color:#48d7ff;
-
-    font-size:32px;
-
-    font-weight:800;
-}
-
-.price-label{
-    margin-bottom:20px;
-
-    color:#7891a0;
-}
-
-/* =========================
-   CONTACT
-========================= */
-
-.contact-section{
-    background:
-    radial-gradient(
-        circle at center,
-        #007ac933,
-        transparent 45%
-    ),
-    #050a12;
-}
-
-.contact-box{
-    max-width:900px;
-    margin:auto;
-
-    text-align:center;
-
-    padding:45px 25px;
-
-    border-radius:25px;
-
-    background:
-    linear-gradient(
-        145deg,
-        #0d1c2b,
-        #08101b
-    );
-
-    border:1px solid #24495d;
-}
-
-.contact-box h2{
-    font-size:38px;
-    margin-bottom:15px;
-}
-
-.contact-box > p{
-    color:#a9bdc9;
-    margin-bottom:30px;
-}
-
-.contact-details{
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-
-    gap:15px;
-
-    margin-bottom:30px;
-}
-
-.contact-item{
-    padding:18px;
-
-    border-radius:15px;
-
-    background:#0a1521;
-
-    border:1px solid #1c3546;
-}
-
-.contact-item span{
-    display:block;
-
-    font-size:25px;
-
-    color:#55d9ff;
-
-    margin-bottom:8px;
-}
-
-.contact-item strong{
-    display:block;
-    margin-bottom:5px;
-}
-
-.contact-item a{
-    color:#b6cfdd;
-    word-break:break-word;
-}
-
-/* =========================
-   CART OVERLAY
-========================= */
-
-.overlay{
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:3000;
-
-    background:rgba(0,0,0,.72);
-
-    backdrop-filter:blur(5px);
-}
-
-.cart-panel{
-    position:absolute;
-
-    right:0;
-    top:0;
-
-    width:100%;
-    max-width:500px;
-
-    height:100%;
-
-    overflow-y:auto;
-
-    padding:25px;
-
-    background:#09131f;
-
-    border-left:1px solid #2b647c;
-
-    animation:slideIn .3s ease;
-}
-
-@keyframes slideIn{
-
-    from{
-        transform:translateX(100%);
-    }
-
-    to{
-        transform:translateX(0);
-    }
-
-}
-
-.cart-header{
-    display:flex;
-
-    justify-content:space-between;
-    align-items:center;
-
-    margin-bottom:25px;
-}
-
-.cart-header h2{
-    font-size:28px;
-}
-
-.close-btn{
-    border:0;
-
-    background:none;
-
-    color:#aaa;
-
-    font-size:32px;
-
-    cursor:pointer;
-}
-
-.close-btn:hover{
-    color:white;
-}
-
-/* CART ITEM */
-
-.cart-item{
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    padding:15px;
-
-    margin-bottom:12px;
-
-    border-radius:15px;
-
-    background:#101e2d;
-
-    border:1px solid #203e51;
-}
-
-.cart-item-icon{
-    font-size:30px;
-}
-
-.cart-item-info{
-    flex:1;
-}
-
-.cart-item-name{
-    font-weight:bold;
-}
-
-.cart-item-price{
-    color:#4ed8ff;
-
-    margin-top:5px;
-}
-
-.quantity{
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-}
-
-.quantity button{
-    width:30px;
-    height:30px;
-
-    border:0;
-
-    border-radius:7px;
-
-    color:white;
-
-    background:#18374b;
-
-    cursor:pointer;
-}
-
-.quantity span{
-    min-width:18px;
-    text-align:center;
-}
-
-.remove-btn{
-    border:0;
-
-    color:#ff667b;
-
-    background:none;
-
-    cursor:pointer;
-
-    font-size:18px;
-}
-
-/* CART SUMMARY */
-
-.cart-summary{
-    margin-top:25px;
-
-    padding:20px;
-
-    border-radius:15px;
-
-    background:#0d1c2a;
-
-    border:1px solid #23485b;
-}
-
-.summary-row{
-    display:flex;
-
-    justify-content:space-between;
-
-    margin-bottom:12px;
-
-    color:#a9c0cd;
-}
-
-.summary-total{
-    display:flex;
-
-    justify-content:space-between;
-
-    padding-top:15px;
-
-    margin-top:15px;
-
-    border-top:1px solid #284354;
-
-    color:#4ed8ff;
-
-    font-size:22px;
-
-    font-weight:bold;
-}
-
-/* =========================
-   CHECKOUT
-========================= */
-
-.checkout-modal{
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:4000;
-
-    padding:20px;
-
-    overflow-y:auto;
-
-    background:rgba(0,0,0,.82);
-
-    backdrop-filter:blur(7px);
-}
-
-.checkout{
-    width:100%;
-
-    max-width:700px;
-
-    margin:30px auto;
-
-    padding:30px;
-
-    border-radius:25px;
-
-    background:#09131f;
-
-    border:1px solid #2a617a;
-
-    box-shadow:
-    0 20px 80px #000;
-}
-
-.checkout-header{
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:25px;
-}
-
-.checkout-header h2{
-    font-size:30px;
-}
-
-.form-group{
-    margin-bottom:18px;
-}
-
-.form-group label{
-    display:block;
-
-    margin-bottom:8px;
-
-    color:#c4d7e0;
-
-    font-weight:bold;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select{
-    width:100%;
-
-    padding:14px;
-
-    border-radius:10px;
-
-    outline:none;
-
-    color:white;
-
-    background:#07101a;
-
-    border:1px solid #29495b;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus{
-    border-color:#32cfff;
-}
-
-.form-group textarea{
-    min-height:110px;
-
-    resize:vertical;
-}
-
-/* FILE UPLOAD */
-
-.upload-box{
-    padding:20px;
-
-    text-align:center;
-
-    border:2px dashed #28627a;
-
-    border-radius:15px;
-
-    background:#07121d;
-}
-
-.upload-box input{
-    margin-top:12px;
-}
-
-.upload-note{
-    margin-top:8px;
-
-    color:#7f96a3;
-
-    font-size:13px;
-}
-
-/* ORDER SUMMARY */
-
-.order-summary{
-    padding:20px;
-
-    margin:20px 0;
-
-    border-radius:15px;
-
-    background:#0c1926;
-
-    border:1px solid #22465a;
-}
-
-.order-summary h3{
-    margin-bottom:15px;
-}
-
-.summary-service{
-    display:flex;
-
-    justify-content:space-between;
-
-    padding:8px 0;
-
-    color:#b7ccd6;
-}
-
-.summary-grand{
-    display:flex;
-
-    justify-content:space-between;
-
-    margin-top:12px;
-
-    padding-top:15px;
-
-    border-top:1px solid #294556;
-
-    color:#4ed8ff;
-
-    font-size:22px;
-
-    font-weight:bold;
-}
-
-/* SUCCESS */
-
-.success{
-    display:none;
-
-    text-align:center;
-
-    padding:35px 10px;
-}
-
-.success-icon{
-    font-size:70px;
-
-    margin-bottom:15px;
-}
-
-.success h2{
-    color:#4ee58c;
-
-    margin-bottom:15px;
-}
-
-.success p{
-    color:#b9cbd4;
-
-    line-height:1.7;
-}
-
-.order-id{
-    display:inline-block;
-
-    margin:20px 0;
-
-    padding:12px 18px;
-
-    border-radius:10px;
-
-    color:#5bdcff;
-
-    background:#0d1d2a;
-
-    border:1px solid #24556b;
-
-    font-weight:bold;
-}
-
-.owner-info{
-    margin-top:20px;
-
-    padding:20px;
-
-    border-radius:15px;
-
-    background:#0d1b28;
-
-    border:1px solid #245066;
-}
-
-.owner-info strong{
-    color:#55d9ff;
-}
-
-/* =========================
-   EMPTY CART
-========================= */
-
-.empty-cart{
-    padding:50px 15px;
-
-    text-align:center;
-
-    color:#8198a5;
-}
-
-.empty-cart div{
-    font-size:55px;
-
-    margin-bottom:15px;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    text-align:center;
-
-    padding:30px 20px;
-
-    color:#718592;
-
-    background:#03060b;
-
-    border-top:1px solid #152b3a;
-}
-
-footer strong{
-    color:#4ed9ff;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:700px){
-
-    nav{
-        gap:12px;
-
-        justify-content:flex-start;
-
-        overflow-x:auto;
-
-        font-size:13px;
-    }
-
-    .hero-logo{
-        width:145px;
-        height:145px;
-    }
-
-    .hero h1{
-        font-size:35px;
-    }
-
-    .tagline{
-        font-size:17px;
-    }
-
-    .about{
-        flex-direction:column;
-
-        text-align:center;
-
-        padding:30px 20px;
-    }
-
-    .about-logo{
-        width:140px;
-        height:140px;
-    }
-
-    .section-title h2{
-        font-size:30px;
-    }
-
-    .checkout{
-        margin:5px auto;
-        padding:22px;
-    }
-
-}
-
-</style>
-</head>
-
-<body>
-
-
-<!-- =========================
-     NAVBAR
-========================= -->
-
-<nav>
-
-<a href="#about">About</a>
-
-<a href="#services">Services</a>
-
-<a href="#contact">Contact</a>
-
-<button
-class="cart-button"
-onclick="openCart()">
-
-🛒 Cart
-
-<span
-class="cart-count"
-id="cartCount">
-0
-</span>
-
-<span
-id="homeCartTotal"
-style="
-margin-left:8px;
-font-weight:800;
-color:#00e5ff;
-white-space:nowrap;
-">
-• ₹0
-</span>
-
-</button>
-
-</nav>
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<header>
-
-<div class="hero">
-
-<h1>
-Mayur Pawar Edits
-</h1>
-
-<p class="tagline">
-Professional Video Creation & Design
-</p>
-
-<div class="hero-buttons">
-
-<a
-href="#services"
-class="btn">
-
-🎨 View Services
-
-</a>
-
-<a
-href="https://wa.me/919769966777"
-target="_blank"
-class="btn btn-outline">
-
-💬 WhatsApp Me
-
-</a>
-
+body{margin:0;font-family:Arial;background:#07121c;color:white}header{padding:18px 6%;display:flex;justify-content:space-between;background:#07121c;border-bottom:1px solid #24485c;position:sticky;top:0}.logo{font-size:27px;font-weight:bold;color:#35c9ff}button{cursor:pointer}.cart{border:0;border-radius:25px;padding:11px 18px;background:#19b9e8;font-weight:bold}.hero{text-align:center;padding:50px 20px}.hero h1{color:#35c9ff;font-size:40px}.services{max-width:1100px;margin:auto;padding:20px}.services h2{text-align:center}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}.card{background:#0c1d29;border:1px solid #24485c;border-radius:15px;padding:20px}.card p{color:#a9bdc8}.price{font-size:24px;font-weight:bold;color:#35c9ff;margin:15px 0}.card button,.orderbtn{width:100%;padding:12px;border:0;border-radius:9px;background:#19b9e8;font-weight:bold}.about{max-width:900px;margin:40px auto;padding:20px;line-height:1.7;color:#c4d5de}.about h2{color:#35c9ff}footer{text-align:center;padding:30px;border-top:1px solid #24485c}.modal{display:none;position:fixed;inset:0;background:#000b;padding:20px;overflow-y:auto;box-sizing:border-box;z-index:9999}.box{max-width:600px;width:100%;max-height:90vh;overflow-y:auto;overflow-x:hidden;margin:5vh auto;background:#0c1d29;border:1px solid #315b70;border-radius:16px;padding:25px;box-sizing:border-box}.box::-webkit-scrollbar{width:8px}.box::-webkit-scrollbar-thumb{background:#25bde8;border-radius:10px}.box::-webkit-scrollbar-track{background:#07121c}@media(max-width:600px){.modal{padding:10px}.box{max-height:88vh;margin:2vh auto;padding:18px}}.close{float:right;background:#c52b4b;color:white;border:0;padding:8px}.item{display:flex;justify-content:space-between;border-bottom:1px solid #24485c;padding:14px 0}input,textarea{width:100%;padding:12px;margin:7px 0 14px;background:#07121c;color:white;border:1px solid #31566a;box-sizing:border-box}.total{font-size:23px;color:#35c9ff;text-align:right;margin:18px 0}.success{display:none;margin-top:15px;padding:15px;background:#123b2b;border-radius:9px}
+</style></head><body>
+<header><div class="logo">Mayur Pawar Edits</div><button class="cart" onclick="openCart()">🛒 Cart (<span id="count">0</span>)</button></header>
+<section class="hero"><h1>MayurPawarEdits</h1><p>Transforming Raw Footage into Cinematic Stories.</p></section>
+<section class="services"><h2>Our Services</h2><div class="grid">
+<div class="card"><h3>🎬 Video Editing</h3><p>Professional video editing</p><div class="price">₹100</div><button type="button" onclick="addToCart('Video Editing',100)">🛒 Add to Cart</button></div>
+<div class="card"><h3>📸 Photo Editing</h3><p>Creative professional photo editing</p><div class="price">₹50</div><button type="button" onclick="addToCart('Photo Editing',50)">🛒 Add to Cart</button></div>
+<div class="card"><h3>🌐 Website Development</h3><p>Professional website development</p><div class="price">₹500</div><button type="button" onclick="addToCart('Website Development',500)">🛒 Add to Cart</button></div>
+<div class="card"><h3>📢 Ad 9:16</h3><p>Vertical promotional advertisement</p><div class="price">₹100</div><button type="button" onclick="addToCart('Ad 9:16',100)">🛒 Add to Cart</button></div>
+<div class="card"><h3>📢 Ad 16:9</h3><p>Landscape promotional advertisement</p><div class="price">₹250</div><button type="button" onclick="addToCart('Ad 16:9',250)">🛒 Add to Cart</button></div>
+<div class="card"><h3>🎨 Designing</h3><p>Print and web materials</p><div class="price">₹50</div><button type="button" onclick="addToCart('Designing',50)">🛒 Add to Cart</button></div>
+<div class="card"><h3>🏷️ Logo Designing</h3><p>Logo and brand identity</p><div class="price">₹50</div><button type="button" onclick="addToCart('Logo Designing',50)">🛒 Add to Cart</button></div>
+<div class="card"><h3>📄 Business Poster</h3><p>Promotional business material</p><div class="price">₹50</div><button type="button" onclick="addToCart('Business Poster',50)">🛒 Add to Cart</button></div>
+<div class="card"><h3>🖼️ YouTube & Instagram Reels Thumbnail</h3><p>Eye-catching social media thumbnails</p><div class="price">₹50</div><button type="button" onclick="addToCart('YouTube & Instagram Reels Thumbnail',50)">🛒 Add to Cart</button></div>
+</div></section>
+<section class="about"><h2>Welcome to MayurPawarEdits</h2><p>Like ❤️ Share 🔥 Subscribe for more edits.</p><p><b>Transforming Raw Footage into Cinematic Stories.</b></p><p>Welcome! This is where boring clips turn into Cinematic Masterpieces. If you’re looking for high-end video editing, creative transitions, and professional color grading, you’re in the right place.</p><p>✨ Cinematic Edits & Storytelling<br>🎨 Color Grading & Visual Effects<br>💻 Editing Tutorials & Tips<br>🎬 Post-Production Excellence</p><p>📧 mayurpawareditsxbusiness43732@gmail.com<br>📸 @MayurPawarEdits<br>📞 +91 97699 66777<br>📺 @mayurpawaredits</p></section>
+<div style="max-width:1100px;margin:25px auto 10px;padding:0 20px;">
+  <div style="background:#0c1d29;border:1px solid #24485c;border-radius:15px;padding:22px;text-align:center;">
+    <h2 style="color:#35c9ff;margin-top:0;">📞 Assigned Editor Contact</h2>
+    <p style="color:#c4d5de;line-height:1.7;margin-bottom:0;">
+      <b>Mayur Pawar Edits</b><br>
+      📞 WhatsApp / Phone: <a href="https://wa.me/919769966777" style="color:#35c9ff;">+91 97699 66777</a><br>
+      📧 Email: <a href="mailto:mayurpawareditsxbusiness43732@gmail.com" style="color:#35c9ff;">mayurpawareditsxbusiness43732@gmail.com</a><br>
+      📸 Instagram: <a href="https://www.instagram.com/mayurpawaredit/" style="color:#35c9ff;">@MayurPawarEdits</a><br>
+      📺 YouTube: <a href="https://youtube.com/@mayurpawaredits" style="color:#35c9ff;">@mayurpawaredits</a>
+    </p>
+  </div>
 </div>
 
-</div>
-
-</header>
-
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section id="about">
-
-<div class="section-title">
-
-<h2>
-About MayurPawarEdits
-</h2>
-
-<p>
-Professional Editing & Creative Designing
-</p>
-
-</div>
-
-
-<div class="about">
-
-
-
-<div class="about-text">
-
-<h3>
-Welcome to MayurPawarEdits
-</h3>
-
-<p>
-Like ❤️ Share 🔥 Subscribe for more edits.
-</p>
-
-<p>
-📺 MayurPawarEdits
-</p>
-
-<p>
-<strong>“Transforming Raw Footage into Cinematic Stories.”</strong>
-</p>
-
-<p>
-Welcome! This is where boring clips turn into Cinematic Masterpieces. If you’re looking for high-end video editing, creative transitions, and professional color grading, you’re in the right place.
-</p>
-
-<p>
-<strong>What I Do:</strong><br>
-- ✨ Cinematic Edits &amp; Storytelling<br>
-- 🎨 Color Grading &amp; Visual Effects<br>
-- 💻 Editing Tutorials &amp; Tips<br>
-- 🎬 Post-Production Excellence
-</p>
-
-<p>
-Let’s create something legendary!<br>
-👇 SUBSCRIBE for your weekly dose of creativity.
-</p>
-
-<p>
-<strong>📩 Let’s Collaborate!</strong><br>
-Whether you’re a creator looking for a professional editor or a brand needing high-impact visuals, I’m ready to bring your ideas to life.
-</p>
-
-<p>
-<strong>Connect with me:</strong><br>
-📧 Email: <a href="mailto:mayurpawareditsxbusiness43732@gmail.com">mayurpawareditsxbusiness43732@gmail.com</a><br>
-📸 Instagram: @MayurPawarEdits<br>
-📱 Phone number for order: +91 97699 66777<br>
-▶️ YouTube Channel: @mayurpawaredits
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     SERVICES
-========================= -->
-
-<section id="services">
-
-<div class="section-title">
-
-<h2>
-Services & Pricing
-</h2>
-
-<p>
-Choose your services and add them to your cart.
-</p>
-
-</div>
-
-<div
-class="services"
-id="servicesContainer">
-</div>
-
-</section>
-
-
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section
-id="contact"
-class="contact-section">
-
-<div class="contact-box">
-
-<h2>
-Let's Work Together 🚀
-</h2>
-
-<p>
-Have a video, photo, advertisement or design project?
-Contact me today!
-</p>
-
-<div class="contact-details">
-
-
-<div class="contact-item">
-
-<span>💬</span>
-
-<strong>
-WhatsApp
-</strong>
-
-<a
-href="https://wa.me/919769966777"
-target="_blank">
-
-+91 9769966777
-
-</a>
-
-</div>
-
-
-<div class="contact-item">
-
-<span>📧</span>
-
-<strong>
-Email
-</strong>
-
-<a
-href="mailto:mayurpawareditsxbusiness43732@gmail.com">
-
-mayurpawareditsxbusiness43732@gmail.com
-
-</a>
-
-</div>
-
-
-<div class="contact-item">
-
-<span>📸</span>
-
-<strong>
-Instagram
-</strong>
-
-<a
-href="https://www.instagram.com/mayurpawaredit"
-target="_blank">
-
-@mayurpawaredit
-
-</a>
-
-</div>
-
-
-<div class="contact-item">
-
-<span>▶️</span>
-
-<strong>
-YouTube
-</strong>
-
-<a
-href="https://youtube.com/@mayurpawaredits"
-target="_blank">
-
-@mayurpawaredits
-
-</a>
-
-</div>
-
-</div>
-
-<p>
-🕐 Order Support Time:
-<strong>
-1:00 PM – 10:00 PM
-</strong>
-</p>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     CART
-========================= -->
-
-<div
-class="overlay"
-id="cartOverlay"
-onclick="closeCartOutside(event)">
-
-<div class="cart-panel">
-
-<div class="cart-header">
-
-<h2>
-🛒 Your Cart
-</h2>
-
-<button
-class="close-btn"
-onclick="closeCart()">
-
-×
-</button>
-
-</div>
-
-
-<div id="cartItems"></div>
-
-
-<div
-class="cart-summary"
-id="cartSummary">
-
-<div class="summary-row">
-
-<span>
-Items
-</span>
-
-<span id="cartItemsCount">
-0
-</span>
-
-</div>
-
-<div class="summary-total">
-
-<span>
-Total
-</span>
-
-<span id="cartTotal">
-₹0
-</span>
-
-</div>
-
-<br>
-
-<button
-class="btn"
-style="width:100%;"
-onclick="startCheckout()">
-
-Proceed to Checkout →
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =========================
-     CHECKOUT
-========================= -->
-
-<div
-class="checkout-modal"
-id="checkoutModal">
-
-<div class="checkout">
-
-<div class="checkout-header">
-
-<h2>
-📋 Checkout
-</h2>
-
-<button
-class="close-btn"
-onclick="closeCheckout()">
-
-×
-</button>
-
-</div>
-
-
-<!-- CHECKOUT FORM -->
-
-<div id="checkoutFormArea">
-
-<form
-id="orderForm"
-
-action="https://formsubmit.co/mayurpawareditsxbusiness43732@gmail.com"
-
-method="POST"
-
-enctype="multipart/form-data">
-
-
-<input
-type="hidden"
-name="_subject"
-value="New Order - Mayur Pawar Edits">
-
-
-<input
-type="hidden"
-name="_template"
-value="table">
-
-
-<input
-type="hidden"
-name="_captcha"
-value="true">
-
-
-<input
-type="hidden"
-name="Order ID"
-id="formOrderId">
-
-
-<input
-type="hidden"
-name="Selected Services"
-id="formServices">
-
-
-<input
-type="hidden"
-name="Total Amount"
-id="formTotalAmount">
-
-
-<!-- NAME -->
-
-<div class="form-group">
-
-<label>
-👤 Full Name *
-</label>
-
-<input
-type="text"
-name="Customer Name"
-id="customerName"
-placeholder="Enter your full name"
-required>
-
-</div>
-
-
-<!-- PHONE -->
-
-<div class="form-group">
-
-<label>
-📱 Phone Number *
-</label>
-
-<input
-type="tel"
-name="Phone Number"
-id="customerPhone"
-placeholder="Enter your phone number"
-required>
-
-</div>
-
-
-<!-- EMAIL -->
-
-<div class="form-group">
-
-<label>
-📧 Email Address
-</label>
-
-<input
-type="email"
-name="Customer Email"
-id="customerEmail"
-placeholder="Enter your email address">
-
-</div>
-
-
-<!-- DELIVERY -->
-
-<div class="form-group">
-
-<label>
-📅 Preferred Delivery Date
-</label>
-
-<input
-type="date"
-name="Preferred Delivery Date"
-id="deliveryDate">
-
-</div>
-
-
-<!-- PROJECT DETAILS -->
-
-<div class="form-group">
-
-<label>
-📝 Project Instructions
-</label>
-
-<textarea
-name="Project Instructions"
-id="projectDetails"
-placeholder="Tell us about your project, style, text, music, colors, etc."></textarea>
-
-</div>
-
-
-<!-- MEDIA -->
-
-<div class="form-group">
-
-<label>
-📎 Upload Photos / Videos / Files
-</label>
-
-<div class="upload-box">
-
-<p>
-Upload the media required for your order.
-</p>
-
-<input
-type="file"
-name="Media Files"
-id="mediaFiles"
-multiple
-accept="image/*,video/*,.pdf,.psd,.ai,.zip">
-
-<p class="upload-note">
-Maximum total upload size: 10 MB
-</p>
-
-</div>
-
-</div>
-
-
-<!-- ORDER SUMMARY -->
-
-<div class="order-summary">
-
-<h3>
-🛍️ Your Order
-</h3>
-
-<div id="checkoutServices"></div>
-
-<div class="summary-grand">
-
-<span>
-Total
-</span>
-
-<span id="checkoutTotal">
-₹0
-</span>
-
-</div>
-
-</div>
-
-
-<button
-type="submit"
-class="btn"
-style="width:100%;">
-
-🚀 Place Order
-
-</button>
-
-</form>
-
-</div>
-
-
-<!-- =========================
-     SUCCESS
-========================= -->
-
-<div
-class="success"
-id="successMessage">
-
-<div class="success-icon">
-✅
-</div>
-
-<h2>
-Order Successfully Placed!
-</h2>
-
-<p>
-Thank you for choosing
-<strong>Mayur Pawar Edits</strong>.
-</p>
-
-
-<div
-class="order-id"
-id="successOrderId">
-
-Order ID: MP-000000
-
-</div>
-
-
-<p>
-
-You will get a WhatsApp message
-from our team between
-
-<strong>
-1:00 PM and 10:00 PM
-</strong>.
-
-</p>
-
-
-<div class="owner-info">
-
-<p>
-
-<strong>
-WhatsApp
-</strong>
-
-<br>
-
-+91 9769966777
-
-</p>
-
-<br>
-
-<p>
-
-<strong>
-Email
-</strong>
-
-<br>
-
-mayurpawareditsxbusiness43732@gmail.com
-
-</p>
-
-<br>
-
-<p>
-
-<strong>
-Support Time
-</strong>
-
-<br>
-
-1:00 PM – 10:00 PM
-
-</p>
-
-</div>
-
-
-<br>
-
-
-<a
-href="https://wa.me/919769966677"
-target="_blank"
-class="btn">
-
-💬 Contact Mayur Pawar Edits
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-<p>
-
-© 2026
-<strong>
-Mayur Pawar Edits
-</strong>
-
-| Video Creation & Design
-
-</p>
-
-<p style="margin-top:8px;">
-
-Professional Editing • Creative Design • Affordable Prices
-
-</p>
-
-</footer>
-
+<footer>© 2026 Mayur Pawar Edits</footer>
+<div class="modal" id="modal"><div class="box"><button class="close" onclick="closeCart()">✕</button><h2>🛒 Your Cart</h2><div id="items"></div><div class="total">Total: ₹<span id="total">0</span></div><button class="orderbtn" onclick="showForm()">Order Now</button><div id="form" style="display:none"><p style="color:#a9bdc8">Fill in your details and then tap <b>🛒 Place Order</b>.</p><h3>Customer Details</h3><input id="name" placeholder="Your name"><div style="display:flex;gap:8px;align-items:center;margin:7px 0 14px">
+<select id="countryCode" style="width:125px;padding:12px;border-radius:8px;border:1px solid #31566a;background:#07121c;color:#fff">
+<option value="+91">🇮🇳 +91 India</option>
+<option value="+1">🇺🇸 +1 USA</option>
+<option value="+44">🇬🇧 +44 UK</option>
+<option value="+61">🇦🇺 +61 Australia</option>
+<option value="+971">🇦🇪 +971 UAE</option>
+<option value="+65">🇸🇬 +65 Singapore</option>
+<option value="+81">🇯🇵 +81 Japan</option>
+<option value="+49">🇩🇪 +49 Germany</option>
+<option value="+33">🇫🇷 +33 France</option>
+<option value="+92">🇵🇰 +92 Pakistan</option>
+<option value="+880">🇧🇩 +880 Bangladesh</option>
+</select>
+<input id="phone" placeholder="Phone number" type="tel" style="flex:1;margin:0">
+</div><input id="media" type="file" multiple accept="image/*,video/*"><textarea id="message" placeholder="Project details"></textarea><button id="placeOrderBtn" class="orderbtn" type="button" onclick="order()">🛒 Place Order</button><div id="orderStatus" style="margin-top:10px;"></div><div class="success" id="success">✅ Your order has been done!<br><br>You will get a WhatsApp message from our team between <b>1:00 PM and 10:00 PM</b>.<br><br>📞 +91 97699 66777<br>📧 mayurpawareditsxbusiness43732@gmail.com</div></div></div></div>
 
 <script>
-
-/* =====================================
-   SERVICES
-===================================== */
-
-const services = [
-
-{
-id:1,
-name:"Video Editing",
-price:100,
-icon:"🎬",
-description:"Professional editing for YouTube, Instagram and social media videos."
-},
-
-{
-id:2,
-name:"Photo Editing",
-price:50,
-icon:"📸",
-description:"Creative and professional editing for your photos."
-},
-
-{
-id:3,
-name:"Advertisement 9:16",
-price:100,
-icon:"📱",
-description:"Vertical advertisement for Instagram Reels and YouTube Shorts."
-},
-
-{
-id:4,
-name:"Advertisement 16:9",
-price:250,
-icon:"🖥️",
-description:"Professional widescreen advertisement for YouTube and businesses."
-},
-
-{
-id:5,
-name:"Designing",
-price:50,
-icon:"🎨",
-description:"Designing for print and web materials."
-},
-
-{
-id:6,
-name:"Logo Designing",
-price:50,
-icon:"💎",
-description:"Professional logo designing and brand identity."
-},
-
-{
-id:7,
-name:"Business Poster",
-price:50,
-icon:"📢",
-description:"Promotional posters for businesses, offers and events."
-},
-
-{
-id:8,
-name:"YouTube & Instagram Thumbnail",
-price:50,
-icon:"🖼️",
-description:"Eye-catching thumbnails for YouTube and Instagram."
-}
-
-];
-
-
-let cart = JSON.parse(localStorage.getItem("mayurPawarEditsCart") || "[]");
-
-
-/* =====================================
-   DISPLAY SERVICES
-===================================== */
-
-function displayServices(){
-
-const container=
-document.getElementById("servicesContainer");
-
-services.forEach((service,index)=>{
-
-container.innerHTML+=`
-
-<div class="card">
-
-<div class="icon">
-${service.icon}
-</div>
-
-<h3>
-${service.name}
-</h3>
-
-<p>
-${service.description}
-</p>
-
-<div class="price">
-₹${service.price}
-</div>
-
-<div class="price-label">
-Per Service
-</div>
-
-<button
-class="btn"
-onclick="addToCart(${index})">
-
-🛒 Add to Cart
-
-</button>
-
-</div>
-
-`;
-
-});
-
-}
-
-
-/* =====================================
-   ADD TO CART
-===================================== */
-
-function addToCart(index){
-
-const service=services[index];
-
-const existing=
-cart.find(item=>item.id===service.id);
-
-
-if(existing){
-
-existing.quantity++;
-
-}else{
-
-cart.push({
-
-...service,
-
-quantity:1
-
-});
-
-}
-
-
-updateCart();
-
-}
-
-
-/* =====================================
-   UPDATE CART
-===================================== */
-
-function updateCart(){
-
-localStorage.setItem("mayurPawarEditsCart", JSON.stringify(cart));
-
-let count=0;
-
-cart.forEach(item=>{
-count+=item.quantity;
-});
-
-
-document.getElementById(
-"cartCount"
-).textContent=count;
-
-const homeCartTotal =
-document.getElementById("homeCartTotal");
-
-if(homeCartTotal){
-
-homeCartTotal.textContent =
-"• ₹" + getTotal();
-
-}
-
-}
-
-
-/* =====================================
-   CART TOTAL
-===================================== */
-
-function getTotal(){
-
-return cart.reduce(
-(total,item)=>
-total+(item.price*item.quantity),
-0
-);
-
-}
-
-
-/* =====================================
-   OPEN CART
-===================================== */
-
-function openCart(){
-
-const overlay=
-document.getElementById("cartOverlay");
-
-const container=
-document.getElementById("cartItems");
-
-container.innerHTML="";
-
-
-if(cart.length===0){
-
-container.innerHTML=`
-
-<div class="empty-cart">
-
-<div>🛒</div>
-
-<h3>
-Your cart is empty
-</h3>
-
-<p>
-Add services to start your order.
-</p>
-
-</div>
-
-`;
-
-document.getElementById(
-"cartSummary"
-).style.display="none";
-
-}else{
-
-document.getElementById(
-"cartSummary"
-).style.display="block";
-
-
-cart.forEach((item,index)=>{
-
-container.innerHTML+=`
-
-<div class="cart-item">
-
-<div class="cart-item-icon">
-${item.icon}
-</div>
-
-<div class="cart-item-info">
-
-<div class="cart-item-name">
-${item.name}
-</div>
-
-<div class="cart-item-price">
-₹${item.price} × ${item.quantity}
-</div>
-
-</div>
-
-<div class="quantity">
-
-<button onclick="changeQuantity(${index},-1)">
-−
-</button>
-
-<span>
-${item.quantity}
-</span>
-
-<button onclick="changeQuantity(${index},1)">
-+
-</button>
-
-</div>
-
-<button
-class="remove-btn"
-onclick="removeItem(${index})">
-
-✕
-
-</button>
-
-</div>
-
-`;
-
-});
-
-
-document.getElementById(
-"cartItemsCount"
-).textContent=
-cart.reduce(
-(a,b)=>a+b.quantity,
-0
-);
-
-document.getElementById(
-"cartTotal"
-).textContent=
-"₹"+getTotal();
-
-}
-
-
-overlay.style.display="block";
-
-}
-
-
-/* =====================================
-   CLOSE CART
-===================================== */
-
-function closeCart(){
-
-document.getElementById(
-"cartOverlay"
-).style.display="none";
-
-}
-
-
-/* =====================================
-   CLOSE OUTSIDE
-===================================== */
-
-function closeCartOutside(event){
-
-if(event.target.id==="cartOverlay"){
-
-closeCart();
-
-}
-
-}
-
-
-/* =====================================
-   QUANTITY
-===================================== */
-
-function changeQuantity(index,change){
-
-cart[index].quantity+=change;
-
-
-if(cart[index].quantity<=0){
-
-cart.splice(index,1);
-
-}
-
-
-updateCart();
-
-openCart();
-
-}
-
-
-/* =====================================
-   REMOVE
-===================================== */
-
-function removeItem(index){
-
-cart.splice(index,1);
-
-updateCart();
-
-openCart();
-
-}
-
-
-/* =====================================
-   ORDER ID
-===================================== */
-
-function generateOrderID(){
-
-const now=new Date();
-
-const number=
-now.getFullYear().toString().slice(-2)+
-String(now.getMonth()+1).padStart(2,"0")+
-String(now.getDate()).padStart(2,"0")+
-String(now.getHours()).padStart(2,"0")+
-String(now.getMinutes()).padStart(2,"0")+
-String(now.getSeconds()).padStart(2,"0");
-
-return "MP-"+number;
-
-}
-
-
-/* =====================================
-   CHECKOUT
-===================================== */
-
-function startCheckout(){
-
-if(cart.length===0){
-
-alert(
-"Please add at least one service to your cart."
-);
-
-return;
-
-}
-
-
-closeCart();
-
-
-const modal=
-document.getElementById("checkoutModal");
-
-const servicesBox=
-document.getElementById("checkoutServices");
-
-
-servicesBox.innerHTML="";
-
-
-cart.forEach(item=>{
-
-servicesBox.innerHTML+=`
-
-<div class="summary-service">
-
-<span>
-${item.icon} ${item.name}
-× ${item.quantity}
-</span>
-
-<span>
-₹${item.price*item.quantity}
-</span>
-
-</div>
-
-`;
-
-});
-
-
-document.getElementById(
-"checkoutTotal"
-).textContent=
-"₹"+getTotal();
-
-
-const orderID=
-generateOrderID();
-
-
-document.getElementById(
-"formOrderId"
-).value=
-orderID;
-
-
-document.getElementById(
-"formServices"
-).value=
-getServiceText();
-
-
-document.getElementById(
-"formTotalAmount"
-).value=
-"₹"+getTotal();
-
-
-modal.style.display="block";
-
-}
-
-
-/* =====================================
-   SERVICE TEXT
-===================================== */
-
-function getServiceText(){
-
-let text="";
-
-cart.forEach((item,index)=>{
-
-text+=
-(index+1)+". "+
-item.name+
-" × "+
-item.quantity+
-" = ₹"+
-(item.price*item.quantity)+
-"\n";
-
-});
-
-return text;
-
-}
-
-
-/* =====================================
-   CLOSE CHECKOUT
-===================================== */
-
-function closeCheckout(){
-
-document.getElementById(
-"checkoutModal"
-).style.display="none";
-
-}
-
-
-/* =====================================
-   FORM SUBMIT
-===================================== */
-
-document.getElementById(
-"orderForm"
-).addEventListener(
-"submit",
-async function(event){
-
-event.preventDefault();
-
-const name = document.getElementById("customerName").value.trim();
-const phone = document.getElementById("customerPhone").value.trim();
-const email = document.getElementById("customerEmail").value.trim();
-const deliveryDate = document.getElementById("deliveryDate").value;
-const details = document.getElementById("projectDetails").value.trim();
-const orderID = document.getElementById("formOrderId").value;
-const total = getTotal();
-const mediaInput = document.getElementById("mediaFiles");
-const mediaFiles = mediaInput && mediaInput.files ? Array.from(mediaInput.files) : [];
-
-if(phone.replace(/\D/g, "").length < 10){
-    alert("Please enter a valid phone number.");
-    return;
-}
-
-if(cart.length === 0){
-    alert("Your cart is empty.");
-    return;
-}
-
-const submitButton = this.querySelector('button[type="submit"]');
-if(submitButton){
-    submitButton.disabled = true;
-    submitButton.textContent = "⏳ Placing Order...";
-}
-
-const servicesForFirebase = cart.map(item => ({
-    id: item.id,
-    name: item.name,
-    price: Number(item.price),
-    quantity: Number(item.quantity),
-    subtotal: Number(item.price) * Number(item.quantity)
-}));
-
-const orderData = {
-    orderId: orderID,
-    customerName: name,
-    phone: phone,
-    email: email,
-    deliveryDate: deliveryDate || "",
-    projectDetails: details || "",
-    services: servicesForFirebase,
-    total: Number(total),
-    status: "Pending",
-    mediaFiles: mediaFiles.map(file => ({
-        name: file.name,
-        type: file.type,
-        size: file.size
-    })),
-    createdAt: Date.now(),
-    source: "Mayur Pawar Edits Website"
-};
-
-try {
-
-    /* 1. Save the order to Firebase for the Admin Dashboard. */
-    const firebase = await window.firebaseReady;
-    const newOrderRef = firebase.push(firebase.ref(firebase.database, "orders"));
-    await firebase.set(newOrderRef, orderData);
-
-    /* 2. Keep the existing email notification. */
-    try {
-        const formData = new FormData(this);
-        await fetch(this.action, {
-            method: "POST",
-            body: formData
-        });
-    } catch(emailError){
-        console.warn("Email notification failed:", emailError);
+(function () {
+  let cart = window.getMayurCart ? window.getMayurCart() : [];
+
+  function saveCartLocal() {
+    localStorage.setItem("mayurCart", JSON.stringify(cart));
+    const count = document.getElementById("count");
+    if (count) count.textContent = cart.reduce((a, x) => a + x.qty, 0);
+  }
+
+  window.addToCart = function (name, price) {
+    const item = cart.find(x => x.name === name);
+    if (item) item.qty += 1;
+    else cart.push({name: name, price: Number(price), qty: 1});
+    saveCartLocal();
+    alert(name + " added to cart!");
+  };
+
+  window.openCart = function () {
+    renderCartLocal();
+    document.getElementById("modal").style.display = "block";
+  };
+
+  window.closeCart = function () {
+    document.getElementById("modal").style.display = "none";
+  };
+
+  window.qty = function (i, n) {
+    cart[i].qty += n;
+    if (cart[i].qty <= 0) cart.splice(i, 1);
+    saveCartLocal();
+    renderCartLocal();
+  };
+
+  window.showForm = function () {
+    if (!cart.length) {
+      alert("Your cart is empty.");
+      return;
     }
+    document.getElementById("form").style.display = "block";
+  };
 
-    /* 3. Show success message. */
-    document.getElementById("checkoutFormArea").style.display = "none";
-    document.getElementById("successMessage").style.display = "block";
-    document.getElementById("successOrderId").textContent = "Order ID: " + orderID;
-
-    /* 4. Open WhatsApp notification. */
-    let message =
-        "Hello Mayur Pawar Edits!%0A%0A" +
-        "🚨 NEW WEBSITE ORDER%0A%0A" +
-        "🧾 Order ID: " + encodeURIComponent(orderID) + "%0A%0A" +
-        "👤 Name: " + encodeURIComponent(name) + "%0A" +
-        "📱 Phone: " + encodeURIComponent(phone) + "%0A" +
-        "📧 Email: " + encodeURIComponent(email) + "%0A%0A" +
-        "🛒 SERVICES:%0A" + encodeURIComponent(getServiceText()) + "%0A" +
-        "💰 TOTAL: ₹" + total + "%0A%0A" +
-        "📝 PROJECT DETAILS:%0A" + encodeURIComponent(details || "None") + "%0A%0A" +
-        "📎 MEDIA FILES: " + mediaFiles.length + "%0A%0A" +
-        "Customer placed this order from the Mayur Pawar Edits website.";
-
-    window.open(
-        "https://wa.me/919769966777?text=" + message,
-        "_blank"
-    );
-
-    cart = [];
-    localStorage.removeItem("mayurPawarEditsCart");
-    updateCart();
-
-} catch(error){
-
-    console.error("Firebase order error:", error);
-    alert(
-        "Order could not be saved. Please check your Firebase Realtime Database Rules. Error: " +
-        (error.message || error)
-    );
-
-} finally {
-    if(submitButton){
-        submitButton.disabled = false;
-        submitButton.textContent = "🚀 Place Order";
+  function renderCartLocal() {
+    const box = document.getElementById("items");
+    const total = document.getElementById("total");
+    if (!cart.length) {
+      box.innerHTML = "<p>Your cart is empty.</p>";
+      total.textContent = "0";
+      return;
     }
-}
+    box.innerHTML = cart.map((x, i) =>
+      '<div class="item"><span><b>' + x.name + '</b><br>₹' + x.price + ' × ' + x.qty +
+      '</span><span><button type="button" onclick="qty(' + i + ',-1)">−</button> ' +
+      x.qty + ' <button type="button" onclick="qty(' + i + ',1)">+</button></span></div>'
+    ).join("");
+    total.textContent = cart.reduce((a, x) => a + x.price * x.qty, 0);
+  }
 
-}
-);
+  window.getMayurCart = function () { return cart; };
+  window.clearMayurCart = function () { cart = []; saveCartLocal(); renderCartLocal(); };
 
-
-/* =====================================
-   START
-===================================== */
-
-displayServices();
-
-updateCart();
-
+  saveCartLocal();
+})();
 </script>
-
-
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBCJ94dTuVHRM6U9D4JqkzSpqNkVihNaqk",
-    authDomain: "mayurpawaredits.firebaseapp.com",
-    databaseURL: "https://mayurpawaredits-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "mayurpawaredits",
-    storageBucket: "mayurpawaredits.firebasestorage.app",
-    messagingSenderId: "317017893798",
-    appId: "1:317017893798:web:8e2b4e0ab2e528d4383d67",
-    measurementId: "G-FZBBMHFNRS"
+  databaseURL: "https://mayurpawaredits-default-rtdb.asia-southeast1.firebasedatabase.app",
+  apiKey: "AIzaSyBCJ94dTuVHRM6U9D4JqkzSpqNkVihNaqk",
+  authDomain: "mayurpawaredits.firebaseapp.com",
+  projectId: "mayurpawaredits",
+  storageBucket: "mayurpawaredits.firebasestorage.app",
+  messagingSenderId: "317017893798",
+  appId: "1:317017893798:web:8e2b4e0ab2e528d4383d67",
+  measurementId: "G-FZBBMHFNRS"
 };
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-window.firebaseReady = Promise.resolve({ database, ref, push, set });
-console.log("Firebase order system initialized");
-</script>
-</body>
-</html>
+let cart = window.getMayurCart ? window.getMayurCart() : [];
+
+function saveCart() {
+  localStorage.setItem("mayurCart", JSON.stringify(cart));
+  document.getElementById("count").textContent = cart.reduce((a,x) => a + x.qty, 0);
+}
+
+window.add = function(name, price) {
+  const item = cart.find(x => x.name === name);
+  if (item) item.qty++;
+  else cart.push({name, price, qty: 1});
+  saveCart();
+  alert(name + " added to cart!");
+};
+
+window.openCart = function() {
+  renderCart();
+  document.getElementById("modal").style.display = "block";
+};
+
+window.closeCart = function() {
+  document.getElementById("modal").style.display = "none";
+};
+
+function renderCart() {
+  const box = document.getElementById("items");
+  const total = document.getElementById("total");
+
+  if (!cart.length) {
+    box.innerHTML = "<p>Your cart is empty.</p>";
+    total.textContent = "0";
+    return;
+  }
+
+  box.innerHTML = cart.map((x,i) =>
+    `<div class="item">
+      <span><b>${x.name}</b><br>₹${x.price} × ${x.qty}</span>
+      <span>
+        <button onclick="qty(${i},-1)">−</button>
+        ${x.qty}
+        <button onclick="qty(${i},1)">+</button>
+      </span>
+    </div>`
+  ).join("");
+
+  total.textContent = cart.reduce((a,x) => a + x.price * x.qty, 0);
+}
+
+window.qty = function(i, n) {
+  cart[i].qty += n;
+  if (cart[i].qty <= 0) cart.splice(i,1);
+  saveCart();
+  renderCart();
+};
+
+window.showForm = function() {
+  if (!cart.length) {
+    alert("Your cart is empty.");
+    return;
+  }
+  document.getElementById("form").style.display = "block";
+};
+
+window.order = async function() {
+  const name = document.getElementById("name").value.trim();
+  const countryCode = document.getElementById("countryCode").value;
+  const phoneNumber = document.getElementById("phone").value.trim();
+  const phone = countryCode + " " + phoneNumber;
+  const message = document.getElementById("message").value.trim();
+  const mediaInput = document.getElementById("media");
+  const statusBox = document.getElementById("orderStatus");
+  const button = document.getElementById("placeOrderBtn");
+
+  if (!name || !phoneNumber) {
+    alert("Please enter your name and phone number.");
+    return;
+  }
+
+  if (!cart.length) {
+    alert("Your cart is empty.");
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "Placing Order...";
+  statusBox.style.color = "#ffd166";
+  statusBox.textContent = "Connecting to Firebase...";
+
+  const orderData = {
+    orderId: "MP-" + Date.now(),
+    customerName: name,
+    phone: phone,
+    services: cart.map(x => ({
+      name: x.name,
+      price: Number(x.price),
+      quantity: Number(x.qty)
+    })),
+    total: cart.reduce((a, x) => a + Number(x.price) * Number(x.qty), 0),
+    message: message,
+    mediaFiles: mediaInput ? Array.from(mediaInput.files).map(f => ({
+      name: f.name,
+      type: f.type,
+      size: f.size
+    })) : [],
+    status: "New",
+    createdAt: new Date().toISOString(),
+    createdAtReadable: new Date().toLocaleString("en-IN")
+  };
+
+  try {
+    if (!database) throw new Error("Firebase Realtime Database is not initialized.");
+
+    const ordersRef = ref(database, "orders");
+    const newOrderRef = push(ordersRef);
+
+    // Never leave the customer stuck on "Placing Order".
+    const timeout = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error(
+        "Firebase did not respond within 12 seconds. Check that Realtime Database is created and your Database Rules allow writes."
+      )), 12000)
+    );
+
+    await Promise.race([
+      set(newOrderRef, orderData),
+      timeout
+    ]);
+
+    localStorage.setItem("mayurLastOrder", JSON.stringify(orderData));
+
+    if (window.clearMayurCart) window.clearMayurCart();
+    cart = [];
+
+    statusBox.style.color = "#53f28b";
+    statusBox.textContent = "✅ Order placed successfully!";
+    document.getElementById("success").style.display = "block";
+    button.textContent = "Order Placed ✓";
+
+    document.getElementById("name").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("message").value = "";
+    if (mediaInput) mediaInput.value = "";
+
+  } catch (error) {
+    console.error("Order submission failed:", error);
+    statusBox.style.color = "#ff6b6b";
+    statusBox.textContent = "❌ Order was not placed: " + (error.message || error);
+
+    alert(
+      "Order could not be placed.\n\n" +
+      (error.message || error) +
+      "\n\nPlease check Firebase Realtime Database and its Rules."
+    );
+
+    button.disabled = false;
+    button.textContent = "🛒 Place Order";
+  }
+};
+
+saveCart();
+
+</script></body></html>
