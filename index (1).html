@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MayurPawar Edits — Video Creation &amp; Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/jpeg" href="logo.jpg">
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-storage-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBCJ94dTuVHRM6U9D4JqkzSpqNkVihNaqk",
+    authDomain: "mayurpawaredits.firebaseapp.com",
+    databaseURL: "https://mayurpawaredits-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "mayurpawaredits",
+    storageBucket: "mayurpawaredits.firebasestorage.app",
+    messagingSenderId: "317017893798",
+    appId: "1:317017893798:web:8e2b4e0ab2e528d4383d67",
+    measurementId: "G-FZBBMHFNRS"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+<style>
+  /* ======================================================
+     CONFIG — edit these three lines with your real details
+     ====================================================== */
+  :root{
+    --brand-phone-display: "+91 90000 00000";   /* shown to customers */
+    --brand-phone-wa: "919000000000";            /* digits only, country code first, for WhatsApp links */
+  }
+
+  :root{
+    --bg: #0a1420;
+    --bg-panel: #101e30;
+    --bg-panel-2: #16273d;
+    --line: #22364d;
+    --teal: #4fd1e3;
+    --teal-deep: #1f8a99;
+    --gold: #dab45c;
+    --gold-deep: #a9812e;
+    --text: #f2f6fa;
+    --text-muted: #93a8c0;
+    --danger: #e2665a;
+    --radius: 16px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:
+      radial-gradient(1100px 500px at 15% -10%, rgba(79,209,227,.10), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(218,180,92,.08), transparent 55%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+  }
+  h1,h2,h3,.display{ font-family:'Sora',sans-serif; }
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  .film-strip{
+    height:10px;
+    background-image: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 16px);
+    opacity:.6;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(10,20,32,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    max-width:1120px; margin:0 auto; padding:14px 20px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; }
+  .brand-mark{
+    width:44px; height:44px; border-radius:50%;
+    overflow:hidden;
+    box-shadow:0 0 0 2px var(--bg), 0 0 0 3px var(--line);
+    flex-shrink:0;
+  }
+  .brand-mark img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .brand-text .name{ font-weight:700; font-size:16px; letter-spacing:.2px; line-height:1.1; }
+  .brand-text .name b{ color:var(--teal); font-weight:800; }
+  .brand-text .tag{ font-size:11px; color:var(--text-muted); letter-spacing:1.5px; text-transform:uppercase; }
+
+  nav.main-nav{ display:flex; align-items:center; gap:22px; }
+  nav.main-nav a{ text-decoration:none; color:var(--text-muted); font-size:14px; font-weight:500; transition:color .15s; }
+  nav.main-nav a:hover{ color:var(--text); }
+
+  .cart-btn{
+    position:relative; display:flex; align-items:center; gap:8px;
+    background:var(--bg-panel-2); border:1px solid var(--line); color:var(--text);
+    padding:9px 14px; border-radius:999px; font-size:14px; font-weight:600;
+  }
+  .cart-btn:hover{ border-color:var(--teal); }
+  .cart-btn svg{ width:18px; height:18px; }
+  .cart-badge{
+    position:absolute; top:-6px; right:-6px; min-width:19px; height:19px; padding:0 4px;
+    background:var(--gold); color:#1a1305; border-radius:999px;
+    font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{ max-width:1120px; margin:0 auto; padding:64px 20px 40px; text-align:center; position:relative; }
+  .hero-logo{
+    width:96px; height:96px; border-radius:50%; margin:0 auto 22px;
+    box-shadow:0 0 0 3px var(--bg), 0 0 0 4px var(--line), 0 20px 50px rgba(79,209,227,.15);
+    overflow:hidden;
+  }
+  .hero-logo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .hero .eyebrow{
+    display:inline-flex; align-items:center; gap:8px; font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--gold-deep); padding:6px 14px; border-radius:999px; margin-bottom:22px;
+  }
+  .hero h1{ font-size:clamp(30px,5vw,52px); line-height:1.08; font-weight:800; }
+  .hero h1 span{
+    background:linear-gradient(95deg, var(--teal), var(--gold));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p{ margin:18px auto 0; max-width:560px; color:var(--text-muted); font-size:16px; line-height:1.6; }
+  .hero-cta{ margin-top:30px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .btn{
+    border:none; border-radius:999px; padding:13px 26px; font-weight:700; font-size:14px;
+    display:inline-flex; align-items:center; gap:8px; transition:transform .15s, opacity .15s;
+  }
+  .btn:active{ transform:scale(.97); }
+  .btn-primary{ background:linear-gradient(95deg, var(--teal), #37b8cc); color:#04222a; }
+  .btn-primary:hover{ opacity:.92; }
+  .btn-ghost{ background:transparent; border:1px solid var(--line); color:var(--text); }
+  .btn-ghost:hover{ border-color:var(--teal); }
+
+  /* ---------- Services ---------- */
+  section{ max-width:1120px; margin:0 auto; padding:56px 20px; }
+  .section-head{ text-align:center; margin-bottom:38px; }
+  .section-head .eyebrow{ color:var(--teal); font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:700; }
+  .section-head h2{ font-size:clamp(24px,3.4vw,34px); font-weight:800; margin-top:8px; }
+  .section-head p{ color:var(--text-muted); margin-top:10px; font-size:15px; }
+
+  .services-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:18px; }
+  .service-card{
+    background:linear-gradient(180deg, var(--bg-panel), var(--bg-panel-2));
+    border:1px solid var(--line); border-radius:var(--radius); padding:22px;
+    display:flex; flex-direction:column; gap:14px; position:relative; overflow:hidden;
+  }
+  .service-card::after{
+    content:""; position:absolute; inset:0; border-radius:var(--radius); padding:1px;
+    background:linear-gradient(135deg, rgba(79,209,227,.35), transparent 40%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none;
+  }
+  .service-icon{
+    width:44px; height:44px; border-radius:12px; background:var(--bg-panel-2);
+    border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
+  }
+  .service-icon svg{ width:22px; height:22px; stroke:var(--teal); }
+  .service-card h3{ font-size:17px; font-weight:700; }
+  .service-card .desc{ color:var(--text-muted); font-size:13.5px; line-height:1.55; flex-grow:1; }
+  .price-tag{ display:flex; align-items:baseline; gap:6px; }
+  .price-tag .amount{ font-family:'Sora',sans-serif; font-size:22px; font-weight:800; color:var(--gold); }
+  .price-tag .unit{ font-size:12px; color:var(--text-muted); }
+
+  .add-btn{
+    background:var(--bg-panel-2); border:1px solid var(--teal-deep); color:var(--teal);
+    border-radius:10px; padding:10px 14px; font-weight:700; font-size:13.5px;
+    display:flex; align-items:center; justify-content:center; gap:6px;
+  }
+  .add-btn:hover{ background:rgba(79,209,227,.12); }
+  .qty-stepper{ display:flex; align-items:center; justify-content:space-between; background:var(--bg-panel-2); border:1px solid var(--teal-deep); border-radius:10px; padding:6px 6px; }
+  .qty-stepper button{ background:none; border:none; color:var(--teal); width:30px; height:30px; font-size:17px; font-weight:800; border-radius:8px; }
+  .qty-stepper button:hover{ background:rgba(79,209,227,.15); }
+  .qty-stepper span{ font-weight:700; font-size:14px; }
+
+  /* ---------- Trust / how it works ---------- */
+  .steps{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; }
+  .step{ background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius); padding:20px; }
+  .step .num{ font-family:'Sora',sans-serif; color:var(--gold); font-weight:800; font-size:13px; letter-spacing:1px; }
+  .step h4{ margin-top:8px; font-size:15px; }
+  .step p{ margin-top:6px; color:var(--text-muted); font-size:13.5px; line-height:1.55; }
+
+  /* ---------- Footer ---------- */
+  footer{ border-top:1px solid var(--line); margin-top:20px; }
+  .footer-inner{
+    max-width:1120px; margin:0 auto; padding:36px 20px 26px;
+    display:flex; flex-wrap:wrap; gap:24px; justify-content:space-between; align-items:flex-start;
+  }
+  .footer-block h5{ font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-muted); margin-bottom:10px; }
+  .footer-block a, .footer-block p{ font-size:14px; color:var(--text); text-decoration:none; display:block; margin-bottom:6px; }
+  .footer-bottom{ text-align:center; padding:14px 20px 30px; color:var(--text-muted); font-size:12px; }
+  .admin-link{ color:var(--text-muted); text-decoration:underline; text-underline-offset:3px; }
+
+  /* ---------- Overlay base ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(4,9,16,.6); backdrop-filter:blur(2px);
+    display:none; align-items:stretch; justify-content:flex-end; z-index:100;
+  }
+  .overlay.open{ display:flex; }
+  .overlay.center{ align-items:center; justify-content:center; padding:20px; }
+
+  /* Cart Drawer */
+  .drawer{
+    width:min(420px,100%); height:100%; background:var(--bg-panel);
+    border-left:1px solid var(--line); display:flex; flex-direction:column;
+    animation:slideIn .22s ease-out;
+  }
+  @keyframes slideIn{ from{ transform:translateX(30px); opacity:0; } to{ transform:translateX(0); opacity:1; } }
+  .drawer-head{ display:flex; align-items:center; justify-content:space-between; padding:18px 20px; border-bottom:1px solid var(--line); }
+  .drawer-head h3{ font-size:16px; }
+  .icon-btn{ background:none; border:none; color:var(--text-muted); width:32px; height:32px; border-radius:8px; font-size:18px; }
+  .icon-btn:hover{ background:var(--bg-panel-2); color:var(--text); }
+  .drawer-body{ flex:1; overflow-y:auto; padding:16px 20px; display:flex; flex-direction:column; gap:12px; }
+  .cart-empty{ text-align:center; color:var(--text-muted); padding:50px 10px; font-size:14px; }
+  .cart-item{ display:flex; gap:12px; align-items:center; background:var(--bg-panel-2); border:1px solid var(--line); border-radius:12px; padding:12px; }
+  .cart-item .ci-icon{ width:38px; height:38px; border-radius:10px; background:var(--bg); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .cart-item .ci-icon svg{ width:18px; height:18px; stroke:var(--teal); }
+  .cart-item .ci-info{ flex:1; min-width:0; }
+  .cart-item .ci-info .n{ font-size:13.5px; font-weight:700; }
+  .cart-item .ci-info .p{ font-size:12px; color:var(--text-muted); margin-top:2px; }
+  .cart-item .ci-remove{ background:none; border:none; color:var(--danger); font-size:12px; text-decoration:underline; }
+  .drawer-foot{ border-top:1px solid var(--line); padding:18px 20px 22px; }
+  .row-between{ display:flex; align-items:center; justify-content:space-between; }
+  .total-line{ font-size:14px; color:var(--text-muted); }
+  .total-amt{ font-family:'Sora',sans-serif; font-weight:800; font-size:20px; color:var(--gold); }
+
+  /* Modal (checkout / confirm / admin) */
+  .modal{
+    width:min(560px,100%); max-height:92vh; overflow-y:auto; background:var(--bg-panel);
+    border:1px solid var(--line); border-radius:20px; animation:pop .18s ease-out;
+  }
+  @keyframes pop{ from{ transform:scale(.96); opacity:0; } to{ transform:scale(1); opacity:1; } }
+  .modal-head{ display:flex; align-items:center; justify-content:space-between; padding:20px 24px; border-bottom:1px solid var(--line); }
+  .modal-head h3{ font-size:17px; }
+  .modal-body{ padding:22px 24px; display:flex; flex-direction:column; gap:16px; }
+
+  .field label{ display:block; font-size:12.5px; color:var(--text-muted); margin-bottom:6px; font-weight:600; }
+  .field input[type=text], .field input[type=tel], .field textarea{
+    width:100%; background:var(--bg-panel-2); border:1px solid var(--line); color:var(--text);
+    border-radius:10px; padding:11px 13px; font-size:14px; font-family:inherit;
+  }
+  .field input:focus, .field textarea:focus{ outline:none; border-color:var(--teal); }
+  .field textarea{ resize:vertical; min-height:70px; }
+
+  .upload-box{
+    border:1.5px dashed var(--line); border-radius:12px; padding:20px; text-align:center;
+    background:var(--bg-panel-2); cursor:pointer; transition:border-color .15s;
+  }
+  .upload-box:hover{ border-color:var(--teal); }
+  .upload-box svg{ width:26px; height:26px; stroke:var(--teal); margin:0 auto 8px; }
+  .upload-box .u-title{ font-size:13.5px; font-weight:600; }
+  .upload-box .u-sub{ font-size:12px; color:var(--text-muted); margin-top:4px; }
+  .file-chip-list{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  .file-chip{ background:var(--bg-panel); border:1px solid var(--line); border-radius:999px; padding:5px 12px; font-size:11.5px; color:var(--text-muted); }
+
+  .order-summary{ background:var(--bg-panel-2); border:1px solid var(--line); border-radius:12px; padding:14px 16px; }
+  .my-order-card{ background:var(--bg-panel-2); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin-bottom:10px; }
+  .my-order-card .mo-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+  .my-order-card .mo-date{ font-size:11px; color:var(--text-muted); }
+  .my-order-card .mo-total{ color:var(--gold); font-weight:800; font-size:14px; }
+  .my-order-card .mo-items{ font-size:12.5px; color:var(--text-muted); margin-top:8px; line-height:1.6; }
+  .my-order-card .mo-foot{ display:flex; align-items:center; justify-content:space-between; margin-top:10px; padding-top:10px; border-top:1px solid var(--line); }
+  .status-chip{ font-size:11px; padding:3px 10px; border-radius:999px; font-weight:700; }
+  .status-chip.progress{ background:rgba(218,180,92,.18); color:var(--gold); }
+  .status-chip.complete{ background:rgba(79,209,227,.15); color:var(--teal); }
+  .reorder-btn{ background:var(--bg-panel); border:1px solid var(--teal-deep); color:var(--teal); border-radius:8px; padding:6px 14px; font-size:12px; font-weight:700; }
+  .reorder-btn:hover{ background:rgba(79,209,227,.12); }
+  .order-summary .os-row{ display:flex; justify-content:space-between; font-size:13px; padding:5px 0; color:var(--text-muted); }
+  .order-summary .os-row.total{ border-top:1px solid var(--line); margin-top:6px; padding-top:10px; color:var(--text); font-weight:700; font-size:14.5px; }
+
+  .note-box{ background:rgba(218,180,92,.08); border:1px solid var(--gold-deep); border-radius:10px; padding:12px 14px; font-size:12.5px; color:var(--text-muted); line-height:1.6; }
+  .note-box b{ color:var(--gold); }
+
+  .modal-foot{ padding:18px 24px 24px; display:flex; gap:10px; }
+  .modal-foot .btn{ flex:1; justify-content:center; }
+  .form-error{ color:var(--danger); font-size:12.5px; display:none; }
+
+  /* Confirmation */
+  .confirm-icon{ width:64px; height:64px; border-radius:50%; margin:6px auto 4px; display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(circle, rgba(79,209,227,.25), transparent 70%); }
+  .confirm-icon svg{ width:36px; height:36px; stroke:var(--teal); }
+  .confirm-title{ text-align:center; font-size:19px; font-weight:800; }
+  .confirm-sub{ text-align:center; color:var(--text-muted); font-size:13.5px; margin-top:4px; }
+  .contact-box{ display:flex; flex-direction:column; gap:8px; align-items:center; margin-top:6px; }
+  .contact-box a{ text-decoration:none; font-size:13.5px; color:var(--text); display:flex; align-items:center; gap:8px; }
+  .contact-box a svg{ width:15px; height:15px; stroke:var(--teal); }
+
+  /* Admin */
+  .admin-login-body{ display:flex; flex-direction:column; gap:14px; }
+  .order-card{ background:var(--bg-panel-2); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin-bottom:10px; }
+  .order-card .oc-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+  .order-card .oc-name{ font-weight:700; font-size:14.5px; }
+  .order-card .oc-time{ font-size:11px; color:var(--text-muted); margin-top:2px; }
+  .order-card .oc-total{ color:var(--gold); font-weight:800; font-size:15px; white-space:nowrap; }
+  .order-card .oc-items{ font-size:12.5px; color:var(--text-muted); margin-top:8px; line-height:1.6; }
+  .order-card .oc-actions{ display:flex; align-items:center; justify-content:space-between; margin-top:10px; padding-top:10px; border-top:1px solid var(--line); }
+  .status-pill{ font-size:11px; padding:3px 10px; border-radius:999px; font-weight:700; }
+  .status-pill.new{ background:rgba(218,180,92,.18); color:var(--gold); }
+  .status-pill.done{ background:rgba(79,209,227,.15); color:var(--teal); }
+  .oc-actions label{ display:flex; align-items:center; gap:6px; font-size:12px; color:var(--text-muted); cursor:pointer; }
+  .admin-toolbar{ display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+  .admin-empty{ text-align:center; color:var(--text-muted); padding:40px 10px; font-size:14px; }
+
+  .toast{
+    position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
+    background:var(--bg-panel-2); border:1px solid var(--teal-deep); color:var(--text);
+    padding:12px 20px; border-radius:999px; font-size:13.5px; font-weight:600;
+    box-shadow:0 10px 30px rgba(0,0,0,.35); z-index:200; display:none;
+  }
+
+  @media (max-width:640px){
+    nav.main-nav{ display:none; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#top" class="brand">
+      <div class="brand-mark">
+        <img src="logo.jpg" alt="MayurPawar Edits logo">
+      </div>
+      <div class="brand-text">
+        <div class="name">MayurPawar<b>Edits</b></div>
+        <div class="tag">Video Creation &amp; Design</div>
+      </div>
+    </a>
+    <nav class="main-nav">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#" onclick="openAccount();return false;">Order History</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px">
+      <button class="cart-btn" id="accountBtn" onclick="openAccount()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span id="accountBtnLabel">Log in</span>
+      </button>
+      <button class="cart-btn" onclick="openCart()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        Cart
+        <span class="cart-badge" id="cartBadge" style="display:none">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="film-strip"></div>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-logo"><img src="logo.jpg" alt="MayurPawar Edits"></div>
+    <span class="eyebrow">Video · Photo · Web · Ads</span>
+    <h1>Frame it. Edit it. <span>Launch it.</span></h1>
+    <p>A small studio handling video editing, photo editing, websites and ad creatives — priced simply, ordered in a couple of taps.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        See services &amp; prices
+      </button>
+      <button class="btn btn-ghost" onclick="openCart()">View cart</button>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="section-head">
+      <div class="eyebrow">Pricing</div>
+      <h2>Simple, per-item pricing</h2>
+      <p>Add what you need to the cart, then place one order for everything.</p>
+    </div>
+    <div class="services-grid" id="servicesGrid"></div>
+  </section>
+
+  <section id="how">
+    <div class="section-head">
+      <div class="eyebrow">Process</div>
+      <h2>How ordering works</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">STEP 1</div>
+        <h4>Add services to your cart</h4>
+        <p>Pick video editing, photo editing, a website, or an ad size — add as many as you like.</p>
+      </div>
+      <div class="step">
+        <div class="num">STEP 2</div>
+        <h4>Share your details</h4>
+        <p>Give your name, phone number, and attach the photos or videos you want worked on.</p>
+      </div>
+      <div class="step">
+        <div class="num">STEP 3</div>
+        <h4>We reach out on WhatsApp</h4>
+        <p>Our team messages you between 1:00 PM and 10:00 PM to confirm and start work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head">
+      <div class="eyebrow">About</div>
+      <h2>Welcome to MayurPawarEdits</h2>
+    </div>
+    <div class="step" style="max-width:720px;margin:0 auto;padding:32px">
+      <div class="hero-logo" style="width:72px;height:72px;margin:0 auto 18px"><img src="logo.jpg" alt="Mayur Pawar"></div>
+
+      <p style="text-align:center;font-family:'Sora',sans-serif;font-weight:700;font-size:16px;color:var(--gold);font-style:italic">
+        "Transforming Raw Footage into Cinematic Stories."
+      </p>
+      <p style="text-align:center;font-size:14.5px;color:var(--text-muted);line-height:1.7;margin-top:14px">
+        Welcome! This is where boring clips turn into cinematic masterpieces. If you're looking for high-end video editing, creative transitions and professional color grading, you're in the right place.
+      </p>
+
+      <div style="margin-top:26px;padding-top:22px;border-top:1px solid var(--line)">
+        <h4 style="font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--teal);text-align:center;margin-bottom:14px">What I do</h4>
+        <div class="steps" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px">
+          <div style="background:var(--bg-panel-2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px">✨ Cinematic edits &amp; storytelling</div>
+          <div style="background:var(--bg-panel-2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px">🎨 Color grading &amp; visual effects</div>
+          <div style="background:var(--bg-panel-2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px">💻 Editing tutorials &amp; tips</div>
+          <div style="background:var(--bg-panel-2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px">🎬 Post-production excellence</div>
+        </div>
+      </div>
+
+      <p style="text-align:center;font-size:14px;color:var(--text);margin-top:22px;font-weight:600">Let's create something legendary! 👇 Subscribe for your weekly dose of creativity.</p>
+
+      <div style="margin-top:22px;padding-top:22px;border-top:1px solid var(--line)">
+        <h4 style="font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--teal);text-align:center;margin-bottom:14px">📩 Let's collaborate</h4>
+        <p style="text-align:center;font-size:13.5px;color:var(--text-muted);line-height:1.6;margin-bottom:16px">
+          Whether you're a creator looking for a professional editor or a brand needing high-impact visuals, I'm ready to bring your ideas to life.
+        </p>
+        <div class="contact-box">
+          <a href="mailto:mayurpawareditsxbusiness43732@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            <span>mayurpawareditsxbusiness43732@gmail.com</span>
+          </a>
+          <a href="https://www.instagram.com/mayurpawaredit?igsh=Y2t3emkwZ3NodnZ1" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            <span>@MayurPawarEdits</span>
+          </a>
+          <a href="tel:919769966777">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+91 97699 66777 (for orders)</span>
+          </a>
+        </div>
+        <p style="text-align:center;font-size:12.5px;color:var(--text-muted);margin-top:18px;line-height:1.6">
+          Don't forget to subscribe and hit the bell icon to stay updated with my latest creative drops!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-head">
+      <div class="eyebrow">Contact</div>
+      <h2>Talk to us directly</h2>
+      <p>Reach out any time — replies go out between 1:00 PM and 10:00 PM.</p>
+    </div>
+    <div class="steps" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+      <div class="step">
+        <h4>📞 Phone / WhatsApp</h4>
+        <p id="contactPhoneText" style="font-size:15px;color:var(--text);margin-top:8px"></p>
+      </div>
+      <div class="step">
+        <h4>✉️ Email</h4>
+        <p id="contactEmailText" style="font-size:15px;color:var(--text);margin-top:8px"></p>
+      </div>
+      <div class="step">
+        <h4>📸 Instagram</h4>
+        <a id="igLink" href="#" target="_blank" style="font-size:15px;color:var(--teal);margin-top:8px;display:block;text-decoration:none"><span></span></a>
+      </div>
+      <div class="step">
+        <h4>▶️ YouTube</h4>
+        <a id="ytLink" href="#" target="_blank" style="font-size:15px;color:var(--teal);margin-top:8px;display:block;text-decoration:none"><span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="editor">
+    <div class="section-head">
+      <div class="eyebrow">Assigned editor</div>
+      <h2>Already have an assigned editor?</h2>
+      <p>Contact me directly for anything about your order.</p>
+    </div>
+    <div class="steps" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));max-width:520px;margin:0 auto">
+      <div class="step" style="text-align:center">
+        <h4>💬 WhatsApp</h4>
+        <a id="editorWaLink" href="#" target="_blank" style="font-size:15px;color:var(--teal);margin-top:8px;display:block;text-decoration:none"><span></span></a>
+      </div>
+      <div class="step" style="text-align:center">
+        <h4>📸 Instagram</h4>
+        <a id="editorIgLink" href="#" target="_blank" style="font-size:15px;color:var(--teal);margin-top:8px;display:block;text-decoration:none"><span></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="film-strip"></div>
+  <div class="footer-inner">
+    <div class="footer-block">
+      <h5>MayurPawar Edits</h5>
+      <p style="color:var(--text-muted)">Video creation &amp; design studio.</p>
+    </div>
+    <div class="footer-block">
+      <h5>Contact</h5>
+      <a id="footerPhone" href="#"></a>
+      <a id="footerEmail" href="#"></a>
+    </div>
+    <div class="footer-block">
+      <h5>Follow</h5>
+      <a id="footerIg" href="#" target="_blank"></a>
+      <a id="footerYt" href="#" target="_blank"></a>
+    </div>
+    <div class="footer-block">
+      <h5>Hours</h5>
+      <p style="color:var(--text-muted)">Replies: 1:00 PM – 10:00 PM daily</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © <span id="year"></span> MayurPawar Edits · <a class="admin-link" href="admin.html" target="_blank">Studio admin</a>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="cartOverlay" onclick="if(event.target===this) closeCart()">
+  <div class="drawer">
+    <div class="drawer-head">
+      <h3>Your cart</h3>
+      <button class="icon-btn" onclick="closeCart()">✕</button>
+    </div>
+    <div class="drawer-body" id="cartBody"></div>
+    <div class="drawer-foot" id="cartFoot" style="display:none">
+      <div class="row-between" style="margin-bottom:14px">
+        <span class="total-line">Total</span>
+        <span class="total-amt" id="cartTotal">₹0</span>
+      </div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="openCheckout()">Proceed to order</button>
+    </div>
+  </div>
+</div>
+
+<!-- ACCOUNT / LOGIN MODAL -->
+<div class="overlay center" id="accountOverlay" onclick="if(event.target===this) closeAccount()">
+  <div class="modal" style="max-width:440px">
+    <div class="modal-head">
+      <h3 id="accountModalTitle">Log in</h3>
+      <button class="icon-btn" onclick="closeAccount()">✕</button>
+    </div>
+
+    <!-- Logged out: login/signup form -->
+    <div class="modal-body" id="authFormBody">
+      <button class="btn btn-ghost" style="width:100%;justify-content:center" onclick="googleSignIn()">
+        <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.99.66-2.25 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Continue with Google
+      </button>
+      <div style="display:flex;align-items:center;gap:10px;margin:16px 0">
+        <div style="flex:1;height:1px;background:var(--line)"></div>
+        <span style="font-size:12px;color:var(--text-muted)">or</span>
+        <div style="flex:1;height:1px;background:var(--line)"></div>
+      </div>
+      <div class="field">
+        <label id="authNameLabel" style="display:none">Full name</label>
+        <input type="text" id="authName" placeholder="Your name" style="display:none">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="authEmail" placeholder="you@example.com">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="authPassword" placeholder="At least 6 characters" onkeydown="if(event.key==='Enter')submitAuthForm()">
+      </div>
+      <div class="form-error" id="authError"></div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:6px" id="authSubmitBtn" onclick="submitAuthForm()">Log in</button>
+      <p style="text-align:center;font-size:12.5px;color:var(--text-muted);margin-top:14px">
+        <span id="authToggleText">New here?</span>
+        <a href="#" onclick="toggleAuthMode();return false;" style="color:var(--teal);text-decoration:underline" id="authToggleLink">Create an account</a>
+      </p>
+      <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px">
+        You can also <a href="#" onclick="closeAccount();return false;" style="color:var(--teal);text-decoration:underline">order as a guest</a> without logging in.
+      </p>
+    </div>
+
+    <!-- Logged in: account + order history -->
+    <div class="modal-body hidden" id="accountBody">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+        <div>
+          <div style="font-weight:700;font-size:14.5px" id="accountName"></div>
+          <div style="font-size:12.5px;color:var(--text-muted)" id="accountEmail"></div>
+        </div>
+        <button class="btn btn-ghost" onclick="customerLogout()">Log out</button>
+      </div>
+      <h4 style="font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--teal);margin-bottom:12px">My orders</h4>
+      <div id="myOrdersList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="overlay center" id="checkoutOverlay" onclick="if(event.target===this) closeCheckout()">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Order details</h3>
+      <button class="icon-btn" onclick="closeCheckout()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="order-summary" id="checkoutSummary"></div>
+
+      <div class="field">
+        <label>Full name</label>
+        <input type="text" id="custName" placeholder="Your name">
+      </div>
+      <div class="field">
+        <label>Phone number</label>
+        <div style="display:flex;gap:8px">
+          <select id="custPhoneCode" style="width:110px;background:var(--bg-panel-2);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:11px 8px;font-size:14px;font-family:inherit">
+            <option value="+91" selected>🇮🇳 +91</option>
+            <option value="+1">🇺🇸 +1</option>
+            <option value="+44">🇬🇧 +44</option>
+            <option value="+971">🇦🇪 +971</option>
+            <option value="+61">🇦🇺 +61</option>
+            <option value="+65">🇸🇬 +65</option>
+            <option value="+92">🇵🇰 +92</option>
+            <option value="+880">🇧🇩 +880</option>
+            <option value="+94">🇱🇰 +94</option>
+            <option value="+977">🇳🇵 +977</option>
+          </select>
+          <input type="tel" id="custPhone" placeholder="Mobile number" style="flex:1">
+        </div>
+      </div>
+      <div class="field">
+        <label>Upload photos / videos for this order</label>
+        <div class="upload-box" onclick="document.getElementById('mediaInput').click()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+          <div class="u-title">Tap to attach photos or videos</div>
+          <div class="u-sub">You can select multiple files</div>
+        </div>
+        <input type="file" id="mediaInput" accept="image/*,video/*" multiple style="display:none" onchange="onMediaSelected(this)">
+        <div class="file-chip-list" id="fileChipList"></div>
+      </div>
+      <div class="field">
+        <label>Notes (optional)</label>
+        <textarea id="custNotes" placeholder="Anything specific you want us to know..."></textarea>
+      </div>
+
+      <div class="note-box">
+        Photos and videos you attach here upload straight to secure cloud storage and show up in the admin dashboard as soon as your order is placed.
+      </div>
+      <div class="form-error" id="checkoutError">Please enter your name and phone number.</div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeCheckout()">Cancel</button>
+      <button class="btn btn-primary" id="placeOrderBtn" onclick="submitOrder()">Place order</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRMATION MODAL -->
+<div class="overlay center" id="confirmOverlay" onclick="if(event.target===this) closeConfirm()">
+  <div class="modal" style="max-width:420px">
+    <div class="modal-body" style="text-align:center">
+      <div class="confirm-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <div class="confirm-title">Your order has been placed!</div>
+      <div class="confirm-sub" id="confirmOrderId"></div>
+      <p style="font-size:13.5px;color:var(--text-muted);margin-top:14px;line-height:1.6">
+        You'll get a WhatsApp message from our team between <b style="color:var(--text)">1:00 PM – 10:00 PM</b>.
+        For anything urgent, reach us directly:
+      </p>
+      <div class="contact-box">
+        <a id="confirmPhone" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+          <span></span>
+        </a>
+        <a id="confirmEmail" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+          <span></span>
+        </a>
+      </div>
+      <div class="note-box" style="margin-top:16px;text-align:left">
+        📸 Please add a screenshot of this order along with your photos/videos when you message us on WhatsApp — it helps our team match your files to the right order instantly.
+      </div>
+    </div>
+    <div class="modal-foot" style="flex-wrap:wrap">
+      <a class="btn btn-primary" style="justify-content:center;text-decoration:none;flex:1" id="waSendBtn" href="#" target="_blank">Send files on WhatsApp</a>
+      <button class="btn btn-ghost" style="flex:1" onclick="closeConfirm()">Done</button>
+      <button class="btn btn-ghost" style="flex:1;border-color:var(--danger);color:var(--danger)" id="cancelOrderBtn" onclick="cancelOrder()">Cancel order</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================
+   CONFIG
+   ===================================================== */
+const CONFIG = {
+  phoneDisplay: "+91 97699 66777",
+  phoneWa: "919769966777",
+  email: "mayurpawareditsxbusiness43732@gmail.com",
+  adminPassword: "mayur@2026",       // TODO: change this — visible in page source, not high security
+  hours: "1:00 PM – 10:00 PM",
+  instagram: "https://www.instagram.com/mayurpawaredit?igsh=Y2t3emkwZ3NodnZ1",
+  instagramHandle: "@mayurpawaredit",
+  youtube: "https://youtube.com/@mayurpawaredits?si=WFT1JoDOVjujiCdj",
+  youtubeHandle: "@mayurpawaredits"
+};
+
+document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('contactPhoneText').textContent = CONFIG.phoneDisplay;
+document.getElementById('contactEmailText').textContent = CONFIG.email;
+document.getElementById('footerPhone').textContent = CONFIG.phoneDisplay;
+document.getElementById('footerPhone').href = 'tel:' + CONFIG.phoneWa;
+document.getElementById('footerEmail').textContent = CONFIG.email;
+document.getElementById('footerEmail').href = 'mailto:' + CONFIG.email;
+document.getElementById('igLink').href = CONFIG.instagram;
+document.getElementById('igLink').querySelector('span').textContent = CONFIG.instagramHandle;
+document.getElementById('ytLink').href = CONFIG.youtube;
+document.getElementById('ytLink').querySelector('span').textContent = CONFIG.youtubeHandle;
+document.getElementById('footerIg').href = CONFIG.instagram;
+document.getElementById('footerIg').textContent = 'Instagram · ' + CONFIG.instagramHandle;
+document.getElementById('footerYt').href = CONFIG.youtube;
+document.getElementById('footerYt').textContent = 'YouTube · ' + CONFIG.youtubeHandle;
+document.getElementById('editorWaLink').href = `https://wa.me/${CONFIG.phoneWa}`;
+document.getElementById('editorWaLink').querySelector('span').textContent = CONFIG.phoneDisplay;
+document.getElementById('editorIgLink').href = CONFIG.instagram;
+document.getElementById('editorIgLink').querySelector('span').textContent = CONFIG.instagramHandle;
+
+/* =====================================================
+   ICONS
+   ===================================================== */
+const ICONS = {
+  video: '<path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/>',
+  photo: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>',
+  globe: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/>',
+  ad916: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>',
+  ad169: '<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M9 21h6M12 18v3"/>',
+  design: '<path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/>',
+  logo: '<path d="M12 2l2.9 6.3L22 9l-5 5.2L18.2 22 12 18.3 5.8 22 7 14.2 2 9l7.1-.7L12 2z"/>',
+  poster: '<rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 7h8M8 11h8M8 15h4"/>',
+  thumb: '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M10 9l5 3-5 3V9z"/>'
+};
+
+/* =====================================================
+   SERVICES
+   ===================================================== */
+const SERVICES = [
+  { id:'video',  name:'Video Editing',            price:100, unit:'per video', icon:'video',
+    desc:'Cuts, transitions, color and sound polish for your raw footage.' },
+  { id:'photo',  name:'Photo Editing',             price:50,  unit:'per photo', icon:'photo',
+    desc:'Retouching, color grading and clean-up so your photos stand out.' },
+  { id:'webdev', name:'Website Development',       price:500, unit:'per website', icon:'globe',
+    desc:'A simple, working website built for your business or brand.' },
+  { id:'ad916',  name:'Ad Design — 9:16',          price:100, unit:'per ad', icon:'ad916',
+    desc:'Story and reel-format advertisement, sized for mobile screens.' },
+  { id:'ad169',  name:'Ad Design — 16:9',          price:250, unit:'per ad', icon:'ad169',
+    desc:'Widescreen advertisement, sized for YouTube, sites and TVs.' },
+  { id:'design', name:'Designing (Print & Web)', price:50, unit:'per design', icon:'design',
+    desc:'Flyers, banners, social posts and other print or web materials.' },
+  { id:'logo',   name:'Logo Designing',            price:50,  unit:'per logo', icon:'logo',
+    desc:'A brand identity logo designed around your business.' },
+  { id:'poster', name:'Business Poster',           price:50,  unit:'per poster', icon:'poster',
+    desc:'Promotional posters ready to print or share online.' },
+  { id:'thumb',  name:'YouTube & Reels Thumbnail', price:50, unit:'per thumbnail', icon:'thumb',
+    desc:'Eye-catching thumbnails for YouTube videos and Instagram Reels.' }
+];
+
+/* =====================================================
+   STATE
+   ===================================================== */
+let cart = {}; // { serviceId: qty } — kept in memory for this visit
+let selectedFiles = []; // raw File objects chosen by the customer
+const MAX_FILE_MB = 200; // soft warning only — Firebase Storage handles large files fine
+
+function fmt(n){ return '₹' + n.toLocaleString('en-IN'); }
+function fmtBytes(n){
+  if(n < 1024) return n + ' B';
+  if(n < 1024*1024) return (n/1024).toFixed(0) + ' KB';
+  return (n/(1024*1024)).toFixed(1) + ' MB';
+}
+function svc(id){ return SERVICES.find(s=>s.id===id); }
+
+function renderInitial(){ renderServices(); renderCart(); }
+
+/* =====================================================
+   ACCOUNT / AUTH
+   ===================================================== */
+let authMode = 'login'; // or 'signup'
+let myOrdersCache = {};
+
+function openAccount(){ document.getElementById('accountOverlay').classList.add('open'); }
+function closeAccount(){ document.getElementById('accountOverlay').classList.remove('open'); }
+
+function toggleAuthMode(){
+  authMode = authMode === 'login' ? 'signup' : 'login';
+  const isSignup = authMode === 'signup';
+  document.getElementById('accountModalTitle').textContent = isSignup ? 'Create an account' : 'Log in';
+  document.getElementById('authNameLabel').style.display = isSignup ? 'block' : 'none';
+  document.getElementById('authName').style.display = isSignup ? 'block' : 'none';
+  document.getElementById('authSubmitBtn').textContent = isSignup ? 'Create account' : 'Log in';
+  document.getElementById('authToggleText').textContent = isSignup ? 'Already have an account?' : 'New here?';
+  document.getElementById('authToggleLink').textContent = isSignup ? 'Log in' : 'Create an account';
+  document.getElementById('authError').style.display = 'none';
+}
+
+async function submitAuthForm(){
+  const email = document.getElementById('authEmail').value.trim();
+  const pass = document.getElementById('authPassword').value;
+  const name = document.getElementById('authName').value.trim();
+  const err = document.getElementById('authError');
+  err.style.display = 'none';
+
+  if(!email || !pass){ err.textContent = 'Please enter an email and password.'; err.style.display = 'block'; return; }
+
+  try{
+    if(authMode === 'signup'){
+      const cred = await firebase.auth().createUserWithEmailAndPassword(email, pass);
+      if(name) await cred.user.updateProfile({ displayName: name });
+    }else{
+      await firebase.auth().signInWithEmailAndPassword(email, pass);
+    }
+    closeAccount();
+  }catch(e){
+    err.textContent = e.message || 'Something went wrong.';
+    err.style.display = 'block';
+  }
+}
+
+function googleSignIn(){
+  const provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider)
+    .then(()=> closeAccount())
+    .catch(e=>{
+      const err = document.getElementById('authError');
+      err.textContent = e.message || 'Google sign-in failed.';
+      err.style.display = 'block';
+    });
+}
+
+function customerLogout(){
+  firebase.auth().signOut();
+}
+
+firebase.auth().onAuthStateChanged(user=>{
+  const label = document.getElementById('accountBtnLabel');
+  if(user){
+    label.textContent = (user.displayName || user.email || 'Account').split(' ')[0].split('@')[0];
+    document.getElementById('authFormBody').classList.add('hidden');
+    document.getElementById('accountBody').classList.remove('hidden');
+    document.getElementById('accountModalTitle').textContent = 'My account';
+    document.getElementById('accountName').textContent = user.displayName || 'Welcome';
+    document.getElementById('accountEmail').textContent = user.email || '';
+    loadMyOrders(user.uid);
+  }else{
+    label.textContent = 'Log in';
+    document.getElementById('authFormBody').classList.remove('hidden');
+    document.getElementById('accountBody').classList.add('hidden');
+    document.getElementById('accountModalTitle').textContent = authMode === 'signup' ? 'Create an account' : 'Log in';
+    document.getElementById('authEmail').value = '';
+    document.getElementById('authPassword').value = '';
+    document.getElementById('authName').value = '';
+    myOrdersCache = {};
+  }
+});
+
+function loadMyOrders(uid){
+  firebase.database().ref('orders').orderByChild('uid').equalTo(uid).on('value', snapshot=>{
+    myOrdersCache = snapshot.val() || {};
+    renderMyOrders();
+  });
+}
+
+function renderMyOrders(){
+  const el = document.getElementById('myOrdersList');
+  const orders = Object.entries(myOrdersCache)
+    .map(([key,o])=>({ key, ...o }))
+    .sort((a,b)=> (b.ts||0) - (a.ts||0));
+
+  if(orders.length === 0){
+    el.innerHTML = '<p style="font-size:13px;color:var(--text-muted);text-align:center;padding:20px 0">No orders yet — place your first order and it\'ll show up here.</p>';
+    return;
+  }
+
+  el.innerHTML = orders.map(o=>{
+    const itemsText = (o.items||[]).map(i=>`${i.name} × ${i.qty}`).join(', ');
+    const isComplete = o.progress === 'complete';
+    return `
+    <div class="my-order-card">
+      <div class="mo-top">
+        <div class="mo-date">${o.ts ? new Date(o.ts).toLocaleString('en-IN') : ''}</div>
+        <div class="mo-total">${fmt(o.total)}</div>
+      </div>
+      <div class="mo-items">${itemsText}</div>
+      <div class="mo-foot">
+        <span class="status-chip ${isComplete ? 'complete' : 'progress'}">${isComplete ? 'Complete' : 'In progress'}</span>
+        <button class="reorder-btn" onclick='reorderItems("${o.key}")'>Order again</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function reorderItems(key){
+  const o = myOrdersCache[key];
+  if(!o || !o.items) return;
+  o.items.forEach(i=>{ cart[i.id] = (cart[i.id]||0) + i.qty; });
+  renderServices(); renderCart();
+  closeAccount();
+  openCart();
+  showToast('Items added to your cart');
+}
+
+
+/* =====================================================
+   RENDER: SERVICES
+   ===================================================== */
+function renderServices(){
+  const grid = document.getElementById('servicesGrid');
+  grid.innerHTML = SERVICES.map(s=>{
+    const qty = cart[s.id] || 0;
+    return `
+    <div class="service-card">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[s.icon]}</svg></div>
+      <h3>${s.name}</h3>
+      <p class="desc">${s.desc}</p>
+      <div class="price-tag"><span class="amount">${fmt(s.price)}</span><span class="unit">${s.unit}</span></div>
+      ${qty === 0
+        ? `<button class="add-btn" onclick="addToCart('${s.id}')">
+             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+             Add to cart
+           </button>`
+        : `<div class="qty-stepper">
+             <button onclick="changeQty('${s.id}',-1)">−</button>
+             <span>${qty} in cart</span>
+             <button onclick="changeQty('${s.id}',1)">+</button>
+           </div>`
+      }
+    </div>`;
+  }).join('');
+}
+
+function addToCart(id){ cart[id] = (cart[id]||0) + 1; renderServices(); renderCart(); showToast(svc(id).name + ' added to cart'); }
+function changeQty(id, delta){
+  cart[id] = (cart[id]||0) + delta;
+  if(cart[id] <= 0) delete cart[id];
+  renderServices(); renderCart();
+}
+function removeFromCart(id){ delete cart[id]; renderServices(); renderCart(); }
+
+function cartCount(){ return Object.values(cart).reduce((a,b)=>a+b,0); }
+function cartTotal(){ return Object.entries(cart).reduce((sum,[id,qty])=>sum + svc(id).price*qty, 0); }
+
+/* =====================================================
+   RENDER: CART DRAWER
+   ===================================================== */
+function renderCart(){
+  const body = document.getElementById('cartBody');
+  const foot = document.getElementById('cartFoot');
+  const badge = document.getElementById('cartBadge');
+  const count = cartCount();
+
+  badge.style.display = count > 0 ? 'flex' : 'none';
+  badge.textContent = count;
+
+  const ids = Object.keys(cart);
+  if(ids.length === 0){
+    body.innerHTML = '<div class="cart-empty">Your cart is empty.<br>Add a service to get started.</div>';
+    foot.style.display = 'none';
+    return;
+  }
+  body.innerHTML = ids.map(id=>{
+    const s = svc(id); const qty = cart[id];
+    return `
+    <div class="cart-item">
+      <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[s.icon]}</svg></div>
+      <div class="ci-info">
+        <div class="n">${s.name} × ${qty}</div>
+        <div class="p">${fmt(s.price)} ${s.unit} · ${fmt(s.price*qty)} total</div>
+      </div>
+      <button class="ci-remove" onclick="removeFromCart('${id}')">Remove</button>
+    </div>`;
+  }).join('');
+  foot.style.display = 'block';
+  document.getElementById('cartTotal').textContent = fmt(cartTotal());
+}
+
+/* =====================================================
+   CART DRAWER OPEN/CLOSE
+   ===================================================== */
+function openCart(){ document.getElementById('cartOverlay').classList.add('open'); }
+function closeCart(){ document.getElementById('cartOverlay').classList.remove('open'); }
+
+/* =====================================================
+   CHECKOUT
+   ===================================================== */
+function openCheckout(){
+  if(cartCount() === 0) return;
+  closeCart();
+  const summary = document.getElementById('checkoutSummary');
+  summary.innerHTML = Object.entries(cart).map(([id,qty])=>{
+    const s = svc(id);
+    return `<div class="os-row"><span>${s.name} × ${qty}</span><span>${fmt(s.price*qty)}</span></div>`;
+  }).join('') + `<div class="os-row total"><span>Total</span><span>${fmt(cartTotal())}</span></div>`;
+  document.getElementById('checkoutError').style.display = 'none';
+  document.getElementById('checkoutOverlay').classList.add('open');
+}
+function closeCheckout(){ document.getElementById('checkoutOverlay').classList.remove('open'); }
+
+function onMediaSelected(input){
+  selectedFiles = Array.from(input.files);
+  document.getElementById('fileChipList').innerHTML = selectedFiles.map(f=>{
+    const big = (f.size / (1024*1024)) > MAX_FILE_MB;
+    return `<span class="file-chip" ${big ? 'style="color:var(--danger);border-color:var(--danger)"' : ''}>${f.name} · ${fmtBytes(f.size)}${big ? ' (very large — consider WhatsApp instead)' : ''}</span>`;
+  }).join('');
+}
+
+async function submitOrder(){
+  const name = document.getElementById('custName').value.trim();
+  const phoneCode = document.getElementById('custPhoneCode').value;
+  const phoneNumber = document.getElementById('custPhone').value.trim();
+  const phone = phoneNumber ? `${phoneCode} ${phoneNumber}` : '';
+  const notes = document.getElementById('custNotes').value.trim();
+  const err = document.getElementById('checkoutError');
+  const placeBtn = document.getElementById('placeOrderBtn');
+
+  if(!name || !phone){ err.style.display = 'block'; return; }
+  err.style.display = 'none';
+
+  placeBtn.disabled = true;
+  placeBtn.textContent = 'Placing order...';
+
+  const db = firebase.database();
+  const storage = firebase.storage();
+  const orderRef = db.ref('orders').push();
+  const orderId = orderRef.key;
+
+  // Upload attachments straight to Firebase Storage
+  const fileMeta = [];
+  let uploadFailed = false;
+  for(let i = 0; i < selectedFiles.length; i++){
+    const f = selectedFiles[i];
+    placeBtn.textContent = `Uploading file ${i+1} of ${selectedFiles.length}...`;
+    try{
+      const path = `orders/${orderId}/${Date.now()}_${f.name}`;
+      const snap = await storage.ref(path).put(f);
+      const url = await snap.ref.getDownloadURL();
+      fileMeta.push({ name:f.name, size:f.size, type:f.type, url });
+    }catch(e){
+      console.error('Upload failed for', f.name, e);
+      fileMeta.push({ name:f.name, size:f.size, type:f.type, url:null });
+      uploadFailed = true;
+    }
+  }
+
+  placeBtn.textContent = 'Saving order...';
+
+  const items = Object.entries(cart).map(([id,qty])=>({ id, name:svc(id).name, qty, price:svc(id).price }));
+  const total = cartTotal();
+  const currentUser = firebase.auth().currentUser;
+
+  const order = {
+    ts: firebase.database.ServerValue.TIMESTAMP,
+    name, phone, notes,
+    items, total,
+    files: fileMeta,
+    contacted: false,
+    progress: 'incomplete'
+  };
+  if(currentUser){ order.uid = currentUser.uid; }
+
+  let saveFailed = false;
+  try{
+    await orderRef.set(order);
+    lastOrderKey = orderId;
+    lastOrderFiles = fileMeta;
+  }catch(e){
+    console.error('Order save failed', e);
+    saveFailed = true;
+  }
+
+  // build WhatsApp message (always available as a backup / for large files)
+  const itemsText = items.map(i=>`${i.name} x${i.qty}`).join(', ');
+  const waText = encodeURIComponent(
+    `Hi! I just placed an order on the website.\nName: ${name}\nItems: ${itemsText}\nTotal: ${fmt(total)}${uploadFailed ? '\nSending my photos/videos here.' : ''}`
+  );
+  document.getElementById('waSendBtn').href = `https://wa.me/${CONFIG.phoneWa}?text=${waText}`;
+
+  document.getElementById('confirmOrderId').textContent = saveFailed
+    ? 'Order details may not have saved — please also message us on WhatsApp'
+    : 'Order received';
+  document.getElementById('cancelOrderBtn').style.display = saveFailed ? 'none' : 'flex';
+  document.getElementById('confirmPhone').href = 'tel:' + CONFIG.phoneWa;
+  document.getElementById('confirmPhone').querySelector('span').textContent = CONFIG.phoneDisplay;
+  document.getElementById('confirmEmail').href = 'mailto:' + CONFIG.email;
+  document.getElementById('confirmEmail').querySelector('span').textContent = CONFIG.email;
+
+  closeCheckout();
+  document.getElementById('confirmOverlay').classList.add('open');
+
+  // reset
+  cart = {}; selectedFiles = [];
+  document.getElementById('custName').value = '';
+  document.getElementById('custPhone').value = '';
+  document.getElementById('custNotes').value = '';
+  document.getElementById('fileChipList').innerHTML = '';
+  placeBtn.disabled = false;
+  placeBtn.textContent = 'Place order';
+  renderServices(); renderCart();
+}
+
+function closeConfirm(){ document.getElementById('confirmOverlay').classList.remove('open'); }
+
+let lastOrderKey = null;
+let lastOrderFiles = [];
+
+async function cancelOrder(){
+  if(!lastOrderKey) return;
+  const btn = document.getElementById('cancelOrderBtn');
+  const sure = confirm('Cancel this order? This removes it and any attached photos/videos.');
+  if(!sure) return;
+  btn.disabled = true;
+  btn.textContent = 'Cancelling...';
+  try{
+    for(const f of lastOrderFiles){
+      if(!f.url) continue;
+      try{ await firebase.storage().refFromURL(f.url).delete(); }catch(e){}
+    }
+    await firebase.database().ref('orders/' + lastOrderKey).remove();
+    closeConfirm();
+    showToast('Order cancelled');
+  }catch(e){
+    alert('Could not cancel this order: ' + (e.message || e));
+  }
+  btn.disabled = false;
+  btn.textContent = 'Cancel order';
+  lastOrderKey = null; lastOrderFiles = [];
+}
+
+/* =====================================================
+   TOAST
+   ===================================================== */
+let toastTimer = null;
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>{ t.style.display = 'none'; }, 2200);
+}
+
+/* INIT */
+renderInitial();
+</script>
+</body>
+</html>
