@@ -842,11 +842,21 @@ function googleSignIn(){
   firebase.auth().signInWithPopup(provider)
     .then(()=> closeAccount())
     .catch(e=>{
+      if(e.code === 'auth/popup-blocked' || e.code === 'auth/cancelled-popup-request' || e.code === 'auth/popup-closed-by-user' || e.code === 'auth/operation-not-supported-in-this-environment'){
+        // popups blocked or unsupported — fall back to a full-page redirect instead
+        firebase.auth().signInWithRedirect(provider);
+        return;
+      }
       const err = document.getElementById('authError');
       err.textContent = e.message || 'Google sign-in failed.';
       err.style.display = 'block';
     });
 }
+
+// Completes sign-in if we just came back from the redirect fallback above
+firebase.auth().getRedirectResult()
+  .then(result=>{ if(result && result.user){ closeAccount(); } })
+  .catch(e=>{ console.error('Redirect sign-in failed', e); });
 
 function customerLogout(){
   firebase.auth().signOut();
