@@ -3,1359 +3,343 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Mayur Pawar Edits - Admin Dashboard</title>
-
+<title>MayurPawar Edits — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/jpeg" href="logo.jpg">
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-storage-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBCJ94dTuVHRM6U9D4JqkzSpqNkVihNaqk",
+    authDomain: "mayurpawaredits.firebaseapp.com",
+    databaseURL: "https://mayurpawaredits-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "mayurpawaredits",
+    storageBucket: "mayurpawaredits.firebasestorage.app",
+    messagingSenderId: "317017893798",
+    appId: "1:317017893798:web:8e2b4e0ab2e528d4383d67",
+    measurementId: "G-FZBBMHFNRS"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,sans-serif;
-}
+  :root{
+    --bg: #0a1420;
+    --bg-panel: #101e30;
+    --bg-panel-2: #16273d;
+    --line: #22364d;
+    --teal: #4fd1e3;
+    --teal-deep: #1f8a99;
+    --gold: #dab45c;
+    --gold-deep: #a9812e;
+    --text: #f2f6fa;
+    --text-muted: #93a8c0;
+    --danger: #e2665a;
+    --radius: 16px;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    background:
+      radial-gradient(1100px 500px at 15% -10%, rgba(79,209,227,.10), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(218,180,92,.08), transparent 55%),
+      var(--bg);
+    color:var(--text); font-family:'Inter',sans-serif; min-height:100vh;
+  }
+  h1,h2,h3{ font-family:'Sora',sans-serif; }
+  button{ font-family:inherit; cursor:pointer; }
 
-body{
-    background:#050b12;
-    color:#fff;
-}
+  header{ border-bottom:1px solid var(--line); background:rgba(10,20,32,.85); backdrop-filter:blur(10px); position:sticky; top:0; z-index:10; }
+  .header-inner{ max-width:960px; margin:0 auto; padding:16px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{ width:40px; height:40px; border-radius:50%; overflow:hidden; box-shadow:0 0 0 2px var(--bg), 0 0 0 3px var(--line); flex-shrink:0; }
+  .brand-mark img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .brand-text .name{ font-weight:700; font-size:15px; }
+  .brand-text .tag{ font-size:11px; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; }
 
-/* LOGIN */
+  main{ max-width:960px; margin:0 auto; padding:40px 20px; }
 
-.login-screen{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-}
+  .btn{ border:none; border-radius:999px; padding:11px 22px; font-weight:700; font-size:13.5px; display:inline-flex; align-items:center; gap:8px; }
+  .btn-primary{ background:linear-gradient(95deg, var(--teal), #37b8cc); color:#04222a; }
+  .btn-primary:hover{ opacity:.92; }
+  .btn-ghost{ background:transparent; border:1px solid var(--line); color:var(--text); }
+  .btn-ghost:hover{ border-color:var(--teal); }
 
-.login-box{
-    width:100%;
-    max-width:400px;
-    padding:35px;
-    background:#0b1723;
-    border:1px solid #23536a;
-    border-radius:20px;
-    box-shadow:0 20px 60px #000;
-}
+  /* Login */
+  .login-wrap{ max-width:360px; margin:80px auto; background:var(--bg-panel); border:1px solid var(--line); border-radius:20px; padding:30px; text-align:center; }
+  .login-wrap h2{ font-size:19px; margin-bottom:6px; }
+  .login-wrap p{ color:var(--text-muted); font-size:13px; margin-bottom:20px; }
+  .field{ text-align:left; margin-bottom:16px; }
+  .field label{ display:block; font-size:12.5px; color:var(--text-muted); margin-bottom:6px; font-weight:600; }
+  .field input{ width:100%; background:var(--bg-panel-2); border:1px solid var(--line); color:var(--text); border-radius:10px; padding:11px 13px; font-size:14px; font-family:inherit; }
+  .field input:focus{ outline:none; border-color:var(--teal); }
+  .form-error{ color:var(--danger); font-size:12.5px; margin-top:10px; display:none; }
 
-.login-box h1{
-    text-align:center;
-    color:#51d9ff;
-    margin-bottom:10px;
-}
+  /* Dashboard */
+  .dash-head{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:24px; }
+  .dash-head h1{ font-size:22px; }
+  .toolbar{ display:flex; gap:10px; flex-wrap:wrap; }
 
-.login-box p{
-    text-align:center;
-    color:#7e96a3;
-    margin-bottom:25px;
-}
+  .stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin-bottom:26px; }
+  .stat{ background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:16px 18px; }
+  .stat .n{ font-family:'Sora',sans-serif; font-size:24px; font-weight:800; color:var(--gold); }
+  .stat .l{ font-size:12px; color:var(--text-muted); margin-top:2px; }
 
-.login-box input{
-    width:100%;
-    padding:14px;
-    margin-bottom:15px;
-    border-radius:10px;
-    border:1px solid #29495b;
-    background:#07101a;
-    color:#fff;
-    outline:none;
-}
+  .order-card{ background:var(--bg-panel); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin-bottom:14px; }
+  .oc-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; flex-wrap:wrap; }
+  .oc-name{ font-weight:700; font-size:15px; }
+  .oc-time{ font-size:11.5px; color:var(--text-muted); margin-top:2px; }
+  .oc-total{ color:var(--gold); font-weight:800; font-size:16px; white-space:nowrap; }
+  .oc-items{ font-size:13px; color:var(--text-muted); margin-top:10px; line-height:1.7; }
+  .oc-items b{ color:var(--text); }
+  .oc-actions{ display:flex; align-items:center; justify-content:space-between; margin-top:12px; padding-top:12px; border-top:1px solid var(--line); flex-wrap:wrap; gap:10px; }
+  .status-pill{ font-size:11px; padding:3px 10px; border-radius:999px; font-weight:700; }
+  .status-pill.new{ background:rgba(218,180,92,.18); color:var(--gold); }
+  .status-pill.done{ background:rgba(79,209,227,.15); color:var(--teal); }
+  .oc-actions label{ display:flex; align-items:center; gap:6px; font-size:12.5px; color:var(--text-muted); cursor:pointer; }
+  .oc-actions a{ font-size:12.5px; color:var(--teal); text-decoration:underline; }
+  .delete-btn{ background:none; border:1px solid var(--danger); color:var(--danger); border-radius:8px; padding:5px 12px; font-size:12px; font-weight:600; }
+  .delete-btn:hover{ background:rgba(226,102,90,.12); }
+  .progress-btn{ background:none; border:1px solid var(--teal-deep); color:var(--teal); border-radius:8px; padding:5px 12px; font-size:12px; font-weight:600; }
+  .progress-btn:hover{ background:rgba(79,209,227,.12); }
+  .files-btn{ background:var(--bg-panel-2); border:1px solid var(--teal-deep); color:var(--teal); border-radius:10px; padding:8px 14px; font-weight:700; font-size:12.5px; margin-top:10px; }
+  .files-btn:hover{ background:rgba(79,209,227,.12); }
+  .files-btn:disabled{ opacity:.5; cursor:default; }
 
-.login-btn{
-    width:100%;
-    padding:14px;
-    border:0;
-    border-radius:10px;
-    background:linear-gradient(90deg,#0077ff,#00c6ff);
-    color:#fff;
-    font-weight:bold;
-    cursor:pointer;
-}
+  .media-item{ display:inline-block; width:140px; vertical-align:top; margin:10px 8px 0 0; background:var(--bg-panel-2); border:1px solid var(--line); border-radius:10px; padding:8px; }
+  .media-item img{ width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:6px; display:block; }
+  .media-item video{ width:100%; border-radius:8px; margin-bottom:6px; max-height:140px; }
+  .media-item .fn{ font-size:11px; color:var(--text-muted); word-break:break-all; margin-bottom:6px; }
+  .media-item a{ font-size:11.5px; color:var(--teal); text-decoration:underline; }
 
-.error{
-    display:none;
-    color:#ff687a;
-    text-align:center;
-    margin-top:15px;
-}
-
-/* DASHBOARD */
-
-.dashboard{
-    display:none;
-}
-
-header{
-    position:sticky;
-    top:0;
-    z-index:10;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:18px 25px;
-
-    background:#08121d;
-    border-bottom:1px solid #1c3c4e;
-}
-
-header h1{
-    color:#51d9ff;
-}
-
-.logout{
-    padding:10px 18px;
-    border:0;
-    border-radius:20px;
-    background:#a3263c;
-    color:white;
-    cursor:pointer;
-}
-
-main{
-    max-width:1400px;
-    margin:auto;
-    padding:30px;
-}
-
-.subtitle{
-    color:#8199a7;
-    margin-top:7px;
-}
-
-/* STATS */
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:15px;
-    margin:25px 0;
-}
-
-.stat{
-    padding:22px;
-    border-radius:15px;
-    background:#0c1926;
-    border:1px solid #1e4054;
-}
-
-.stat-title{
-    color:#7e98a6;
-    font-size:13px;
-}
-
-.stat-number{
-    display:block;
-    margin-top:10px;
-    font-size:30px;
-    color:#50d9ff;
-    font-weight:bold;
-}
-
-/* TOOLBAR */
-
-.toolbar{
-    display:flex;
-    gap:10px;
-    margin-bottom:20px;
-}
-
-.search{
-    flex:1;
-    padding:13px;
-    border-radius:10px;
-    border:1px solid #29495b;
-    background:#07101a;
-    color:white;
-    outline:none;
-}
-
-select{
-    padding:13px;
-    border-radius:10px;
-    border:1px solid #29495b;
-    background:#07101a;
-    color:white;
-}
-
-/* ORDERS */
-
-.order{
-    margin-bottom:18px;
-    padding:22px;
-    border-radius:18px;
-    background:#0b1723;
-    border:1px solid #1d4053;
-}
-
-.order-header{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    margin-bottom:20px;
-}
-
-.order-id{
-    color:#50d9ff;
-    font-size:18px;
-    font-weight:bold;
-}
-
-.order-date{
-    color:#718996;
-    font-size:12px;
-    margin-top:6px;
-}
-
-.status{
-    padding:7px 13px;
-    border-radius:20px;
-    font-size:12px;
-    background:#584708;
-    color:#ffe06b;
-    height:max-content;
-}
-
-.order-info{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:12px;
-}
-
-.info{
-    padding:14px;
-    background:#08121d;
-    border-radius:10px;
-}
-
-.label{
-    font-size:11px;
-    color:#718996;
-    margin-bottom:6px;
-}
-
-.value{
-    word-break:break-word;
-}
-
-.services{
-    margin-top:15px;
-    padding:15px;
-    background:#08121d;
-    border-radius:10px;
-}
-
-.service{
-    display:flex;
-    justify-content:space-between;
-    padding:8px 0;
-    color:#bfd0d8;
-}
-
-.total{
-    margin-top:10px;
-    padding-top:12px;
-    border-top:1px solid #294554;
-    display:flex;
-    justify-content:space-between;
-    color:#50d9ff;
-    font-size:20px;
-    font-weight:bold;
-}
-
-.details{
-    margin-top:15px;
-    padding:15px;
-    background:#07111b;
-    border-radius:10px;
-    color:#a9bdc8;
-    line-height:1.6;
-}
-
-.actions{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:15px;
-}
-
-.action{
-    padding:10px 14px;
-    border:0;
-    border-radius:9px;
-    color:white;
-    cursor:pointer;
-}
-
-.whatsapp{
-    background:#159447;
-}
-
-.progress{
-    background:#075a79;
-}
-
-.complete{
-    background:#08783e;
-}
-
-.cancel{
-    background:#9d2637;
-}
-
-.delete{
-    background:#601722;
-}
-
-.empty{
-    text-align:center;
-    padding:60px 20px;
-    color:#718793;
-}
-
-.new-order{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-
-    display:none;
-
-    padding:15px 20px;
-
-    border-radius:12px;
-
-    background:#159447;
-
-    box-shadow:0 10px 30px #000;
-
-    font-weight:bold;
-}
-
-@media(max-width:600px){
-
-    main{
-        padding:18px;
-    }
-
-    header{
-        padding:15px;
-    }
-
-    header h1{
-        font-size:18px;
-    }
-
-    .toolbar{
-        flex-direction:column;
-    }
-
-    .order-header{
-        flex-direction:column;
-    }
-}
+  .empty{ text-align:center; color:var(--text-muted); padding:60px 10px; font-size:14px; }
+  .hidden{ display:none !important; }
 </style>
 </head>
-
 <body>
 
-<!-- LOGIN -->
-
-<div class="login-screen" id="loginScreen">
-
-    <div class="login-box">
-
-        <h1>🔐 Admin Login</h1>
-
-        <p>Mayur Pawar Edits</p>
-
-        <input
-            id="adminEmail"
-            type="email"
-            placeholder="Admin Email"
-        >
-
-        <input
-            id="adminPassword"
-            type="password"
-            placeholder="Password"
-        >
-
-        <button
-            class="login-btn"
-            onclick="adminLogin()"
-        >
-            Login to Dashboard
-        </button>
-
-        <div class="error" id="loginError">
-            ❌ Login failed
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- DASHBOARD -->
-
-<div class="dashboard" id="dashboard">
-
 <header>
-
-    <div>
-        <h1>Mayur Pawar Edits</h1>
-        <small style="color:#718996">
-            Admin Orders Dashboard
-        </small>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark"><img src="logo.jpg" alt="MayurPawar Edits"></div>
+      <div class="brand-text">
+        <div class="name">MayurPawar Edits</div>
+        <div class="tag">Admin dashboard</div>
+      </div>
     </div>
-
-    <button
-        class="logout"
-        onclick="adminLogout()"
-    >
-        Logout
-    </button>
-
+    <button class="btn btn-ghost hidden" id="logoutBtn" onclick="logout()">Log out</button>
+  </div>
 </header>
 
-
 <main>
-
-    <h2>📊 Orders Dashboard</h2>
-
-    <p class="subtitle">
-        Live customer orders
-    </p>
-
-    <div id="firebaseStatus" style="margin-top:12px;padding:10px 14px;border-radius:10px;background:#10202d;border:1px solid #23495d;color:#9fb6c3;font-size:13px;">
-        🔄 Connecting to Firebase...
+  <!-- LOGIN -->
+  <div class="login-wrap" id="loginWrap">
+    <h2>Studio admin login</h2>
+    <p>Sign in with your admin account to view orders.</p>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="adminEmail" placeholder="you@example.com">
     </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="adminPass" placeholder="Password" onkeydown="if(event.key==='Enter')tryLogin()">
+    </div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="tryLogin()">Sign in</button>
+    <div class="form-error" id="loginError">Could not sign in — check your email and password.</div>
+  </div>
 
+  <!-- DASHBOARD -->
+  <div id="dashWrap" class="hidden">
+    <div class="dash-head">
+      <h1>Orders</h1>
+      <div class="toolbar">
+        <button class="btn btn-ghost" onclick="loadOrders()">↻ Refresh</button>
+        <button class="btn btn-ghost" onclick="enableNotifications()">🔔 Enable alerts on this device</button>
+      </div>
+    </div>
 
     <div class="stats">
-
-        <div class="stat">
-            <div class="stat-title">
-                TOTAL ORDERS
-            </div>
-
-            <span
-                class="stat-number"
-                id="totalOrders"
-            >0</span>
-        </div>
-
-
-        <div class="stat">
-            <div class="stat-title">
-                PENDING
-            </div>
-
-            <span
-                class="stat-number"
-                id="pendingOrders"
-            >0</span>
-        </div>
-
-
-        <div class="stat">
-            <div class="stat-title">
-                IN PROGRESS
-            </div>
-
-            <span
-                class="stat-number"
-                id="progressOrders"
-            >0</span>
-        </div>
-
-
-        <div class="stat">
-            <div class="stat-title">
-                COMPLETED
-            </div>
-
-            <span
-                class="stat-number"
-                id="completedOrders"
-            >0</span>
-        </div>
-
-
-        <div class="stat">
-            <div class="stat-title">
-                TOTAL SALES
-            </div>
-
-            <span
-                class="stat-number"
-                id="totalSales"
-            >₹0</span>
-        </div>
-
+      <div class="stat"><div class="n" id="statTotal">0</div><div class="l">Total orders</div></div>
+      <div class="stat"><div class="n" id="statNew">0</div><div class="l">Not yet contacted</div></div>
+      <div class="stat"><div class="n" id="statRevenue">₹0</div><div class="l">Total order value</div></div>
     </div>
 
-
-    <div class="toolbar">
-
-        <input
-            class="search"
-            id="search"
-            placeholder="🔎 Search customer, phone or order ID..."
-            oninput="renderOrders()"
-        >
-
-        <select
-            id="filter"
-            onchange="renderOrders()"
-        >
-
-            <option value="All">
-                All Orders
-            </option>
-
-            <option value="Pending">
-                Pending
-            </option>
-
-            <option value="In Progress">
-                In Progress
-            </option>
-
-            <option value="Completed">
-                Completed
-            </option>
-
-            <option value="Cancelled">
-                Cancelled
-            </option>
-
-        </select>
-
-    </div>
-
-
-    <div id="orders"></div>
-
-    <div style="margin-top:20px;padding:14px;border-radius:12px;background:#0b1723;border:1px dashed #29495b;color:#8da5b1;font-size:13px;">
-        <strong style="color:#51d9ff;">Testing:</strong> Orders must be stored in Firebase Realtime Database at <code>/orders/&lt;order-id&gt;</code>.
-    </div>
-
+    <div id="ordersList"></div>
+  </div>
 </main>
 
-</div>
+<script>
+function fmt(n){ return '₹' + n.toLocaleString('en-IN'); }
 
+function tryLogin(){
+  const email = document.getElementById('adminEmail').value.trim();
+  const pass = document.getElementById('adminPass').value;
+  const err = document.getElementById('loginError');
+  err.style.display = 'none';
+  firebase.auth().signInWithEmailAndPassword(email, pass)
+    .catch(e=>{
+      console.error(e);
+      err.textContent = e.message || 'Could not sign in — check your email and password.';
+      err.style.display = 'block';
+    });
+}
 
-<div
-    class="new-order"
-    id="newOrderNotification"
->
-    🔔 New Order Received!
-</div>
+function logout(){
+  firebase.auth().signOut();
+}
 
+let ordersCache = {}; // key -> order object
+let initialLoaded = false;
+const ordersRef = firebase.database().ref('orders');
 
-<script type="module">
-
-import {
-    initializeApp
-} from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
-import {
-    getAuth,
-    signInWithEmailAndPassword,
-    onAuthStateChanged,
-    signOut
-} from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-import {
-    getDatabase,
-    ref,
-    onValue,
-    update,
-    remove
-} from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
-
-
-/* =========================================
-   YOUR FIREBASE CONFIG
-========================================= */
-
-const firebaseConfig = {
-
-    apiKey:
-    "AIzaSyBCJ94dTuVHRM6U9D4JqkzSpqNkVihNaqk",
-
-    authDomain:
-    "mayurpawaredits.firebaseapp.com",
-
-
-    databaseURL:
-    "https://mayurpawaredits-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId:
-    "mayurpawaredits",
-
-    storageBucket:
-    "mayurpawaredits.firebasestorage.app",
-
-    messagingSenderId:
-    "317017893798",
-
-    appId:
-    "1:317017893798:web:8e2b4e0ab2e528d4383d67",
-
-    measurementId:
-    "G-FZBBMHFNRS"
-
-};
-
-
-const app =
-initializeApp(firebaseConfig);
-
-const auth =
-getAuth(app);
-
-const database =
-getDatabase(app);
-
-
-/* =========================================
-   VARIABLES
-========================================= */
-
-let allOrders = [];
-
-let firstLoad = true;
-
-
-/* =========================================
-   LOGIN
-========================================= */
-
-window.adminLogin = async function(){
-
-    const email =
-        document.getElementById(
-            "adminEmail"
-        ).value.trim();
-
-    const password =
-        document.getElementById(
-            "adminPassword"
-        ).value;
-
-
+firebase.auth().onAuthStateChanged(async user=>{
+  if(user){
+    let isAdmin = false;
     try{
+      const snap = await firebase.database().ref('admins/' + user.uid).get();
+      isAdmin = snap.exists() && snap.val() === true;
+    }catch(e){ isAdmin = false; }
 
-        await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-        );
-
-        document.getElementById(
-            "loginError"
-        ).style.display = "none";
-
+    if(!isAdmin){
+      const err = document.getElementById('loginError');
+      err.textContent = 'This account is not authorized for admin access.';
+      err.style.display = 'block';
+      firebase.auth().signOut();
+      return;
     }
 
-    catch(error){
+    document.getElementById('loginWrap').classList.add('hidden');
+    document.getElementById('dashWrap').classList.remove('hidden');
+    document.getElementById('logoutBtn').classList.remove('hidden');
+    attachOrderListeners();
+  }else{
+    document.getElementById('dashWrap').classList.add('hidden');
+    document.getElementById('logoutBtn').classList.add('hidden');
+    document.getElementById('loginWrap').classList.remove('hidden');
+    document.getElementById('adminPass').value = '';
+    initialLoaded = false;
+    ordersCache = {};
+  }
+});
 
-        console.error(error);
-
-        document.getElementById(
-            "loginError"
-        ).style.display = "block";
-
+function attachOrderListeners(){
+  ordersRef.on('value', snapshot=>{
+    ordersCache = snapshot.val() || {};
+    renderOrders();
+    initialLoaded = true;
+  });
+  ordersRef.on('child_added', snapshot=>{
+    if(initialLoaded && 'Notification' in window && Notification.permission === 'granted'){
+      const o = snapshot.val();
+      new Notification('New order received!', { body: `${o.name} · ${fmt(o.total)}` });
     }
-
-};
-
-
-/* =========================================
-   AUTH CHECK
-========================================= */
-
-onAuthStateChanged(
-    auth,
-    user => {
-
-        if(user){
-
-            document.getElementById(
-                "loginScreen"
-            ).style.display = "none";
-
-            document.getElementById(
-                "dashboard"
-            ).style.display = "block";
-
-            startOrders();
-
-        }
-
-        else{
-
-            document.getElementById(
-                "loginScreen"
-            ).style.display = "flex";
-
-            document.getElementById(
-                "dashboard"
-            ).style.display = "none";
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   LOGOUT
-========================================= */
-
-window.adminLogout = function(){
-
-    signOut(auth);
-
-};
-
-
-/* =========================================
-   LISTEN FOR ORDERS
-========================================= */
-
-let ordersListenerStarted = false;
-
-function startOrders(){
-
-    if(ordersListenerStarted){
-        return;
-    }
-
-    ordersListenerStarted = true;
-
-    const statusBox = document.getElementById("firebaseStatus");
-
-    if(statusBox){
-        statusBox.textContent = "🔄 Connected to Firebase. Listening for orders...";
-    }
-
-    const ordersRef = ref(database, "orders");
-
-    onValue(
-        ordersRef,
-        snapshot => {
-
-            const data = snapshot.val();
-
-            console.log("Firebase /orders data:", data);
-
-            allOrders = [];
-
-            if(data && typeof data === "object"){
-                Object.entries(data).forEach(([id, order]) => {
-                    if(order && typeof order === "object"){
-                        allOrders.push({ firebaseId: id, ...order });
-                    }
-                });
-            }
-
-            allOrders.sort((a,b) => Number(b.createdAt || 0) - Number(a.createdAt || 0));
-
-            renderOrders();
-
-            if(statusBox){
-                statusBox.textContent = allOrders.length
-                    ? "🟢 Firebase connected • " + allOrders.length + " order(s) loaded"
-                    : "🟢 Firebase connected • No orders found under /orders";
-                statusBox.style.color = allOrders.length ? "#8ff0b1" : "#ffd36b";
-            }
-
-            if(!firstLoad){
-                showNewOrder();
-            }
-
-            firstLoad = false;
-        },
-        error => {
-
-            console.error("Firebase Realtime Database error:", error);
-
-            if(statusBox){
-                statusBox.textContent = "🔴 Firebase error: " + (error?.message || "Unable to read /orders");
-                statusBox.style.color = "#ff8b98";
-            }
-
-            alert("Firebase could not read /orders. Check your Realtime Database Rules and make sure the order data is stored under /orders.");
-        }
-    );
+  });
 }
 
-/* =========================================
-   DISPLAY ORDERS
-========================================= */
+function loadOrders(){ /* kept for the Refresh button — data is already live via onValue */ }
 
-window.renderOrders = function(){
+function renderOrders(){
+  const listEl = document.getElementById('ordersList');
+  const orders = Object.entries(ordersCache)
+    .map(([key,o])=>({ key, ...o }))
+    .sort((a,b)=> (b.ts||0) - (a.ts||0));
 
-    const container =
-        document.getElementById(
-            "orders"
-        );
+  document.getElementById('statTotal').textContent = orders.length;
+  document.getElementById('statNew').textContent = orders.filter(o=>!o.contacted).length;
+  document.getElementById('statRevenue').textContent = fmt(orders.reduce((s,o)=>s+(o.total||0),0));
 
+  if(orders.length === 0){
+    listEl.innerHTML = '<div class="empty">No orders yet. New orders placed on the website will show up here.</div>';
+    return;
+  }
 
-    const search =
-        document.getElementById(
-            "search"
-        ).value.toLowerCase();
+  listEl.innerHTML = orders.map(o=>{
+    const itemsHtml = (o.items||[]).map(i=>`${i.name} × ${i.qty} — ${fmt(i.price*i.qty)}`).join('<br>');
+    const notesHtml = o.notes ? `<br><b>Notes:</b> ${o.notes}` : '';
+    const waLink = `https://wa.me/${(o.phone||'').replace(/\D/g,'')}`;
+    const files = o.files || [];
+    const ok = files.filter(f=>f.url);
+    const failed = files.length - ok.length;
 
-
-    const filter =
-        document.getElementById(
-            "filter"
-        ).value;
-
-
-    const filtered =
-        allOrders.filter(order => {
-
-            const text = (
-
-                (order.orderId || "") +
-                " " +
-                (order.customerName || "") +
-                " " +
-                (order.phone || "") +
-                " " +
-                (order.email || "")
-
-            ).toLowerCase();
-
-
-            return (
-
-                text.includes(search)
-
-                &&
-
-                (
-                    filter === "All" ||
-                    (order.status || "Pending") === filter
-                )
-
-            );
-
-        });
-
-
-    container.innerHTML = "";
-
-
-    if(filtered.length === 0){
-
-        container.innerHTML = `
-
-            <div class="empty">
-
-                <h2>📦 No Orders Found</h2>
-
-                <p>
-                    Orders placed on your website
-                    will appear here.
-                </p>
-
-            </div>
-
-        `;
-
-        updateStats();
-
-        return;
-
+    let filesHtml = '';
+    if(files.length > 0){
+      filesHtml = `<div class="media-grid" style="margin-top:10px">` + ok.map(m=>{
+        const isImage = m.type && m.type.startsWith('image/');
+        const isVideo = m.type && m.type.startsWith('video/');
+        const preview = isImage ? `<img src="${m.url}">`
+          : isVideo ? `<video src="${m.url}" controls></video>` : '';
+        return `<div class="media-item">${preview}<div class="fn">${m.name}</div><a href="${m.url}" target="_blank">Open / download</a></div>`;
+      }).join('') + '</div>' +
+      (failed ? `<div style="font-size:11.5px;color:var(--danger);margin-top:6px">${failed} file(s) failed to upload — ask the customer to resend on WhatsApp.</div>` : '');
     }
-
-
-    filtered.forEach(order => {
-
-        container.innerHTML +=
-            createOrderHTML(order);
-
-    });
-
-
-    updateStats();
-
-};
-
-
-/* =========================================
-   SAFE HTML DISPLAY
-========================================= */
-
-function escapeHtml(value){
-    return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
-/* =========================================
-   ORDER CARD
-========================================= */
-
-function createOrderHTML(order){
-
-    let servicesHTML = "";
-    const serviceList = Array.isArray(order.services)
-        ? order.services
-        : (order.services && typeof order.services === "object" ? Object.values(order.services) : []);
-
-    serviceList.forEach(service => {
-
-        const quantity = Number(service.quantity || 1);
-        const price = Number(service.price || 0);
-
-        servicesHTML += `
-            <div class="service">
-                <span>${escapeHtml(service.name || "Service")} × ${quantity}</span>
-                <span>₹${price * quantity}</span>
-            </div>
-        `;
-    });
-
-    const createdDate =
-        order.createdAt
-        ? new Date(
-            Number(order.createdAt)
-          ).toLocaleString()
-        : "Date not available";
-
 
     return `
-
-        <div class="order">
-
-            <div class="order-header">
-
-                <div>
-
-                    <div class="order-id">
-
-                        🧾
-                        ${escapeHtml(order.orderId || order.firebaseId)}
-
-                    </div>
-
-                    <div class="order-date">
-
-                        ${createdDate}
-
-                    </div>
-
-                </div>
-
-
-                <div class="status">
-
-                    ${escapeHtml(order.status || "Pending")}
-
-                </div>
-
-            </div>
-
-
-            <div class="order-info">
-
-
-                <div class="info">
-
-                    <div class="label">
-                        CUSTOMER
-                    </div>
-
-                    <div class="value">
-                        👤
-                        ${escapeHtml(order.customerName || "-")}
-                    </div>
-
-                </div>
-
-
-                <div class="info">
-
-                    <div class="label">
-                        PHONE
-                    </div>
-
-                    <div class="value">
-                        📱
-                        ${escapeHtml(order.phone || "-")}
-                    </div>
-
-                </div>
-
-
-                <div class="info">
-
-                    <div class="label">
-                        EMAIL
-                    </div>
-
-                    <div class="value">
-                        📧
-                        ${escapeHtml(order.email || "-")}
-                    </div>
-
-                </div>
-
-
-                <div class="info">
-
-                    <div class="label">
-                        DELIVERY
-                    </div>
-
-                    <div class="value">
-                        📅
-                        ${escapeHtml(order.deliveryDate || "-")}
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="services">
-
-                <strong>
-                    🛒 SERVICES
-                </strong>
-
-                ${servicesHTML}
-
-
-                <div class="total">
-
-                    <span>
-                        TOTAL
-                    </span>
-
-                    <span>
-                        ₹${order.total || 0}
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="details">
-
-                <strong>
-                    📝 PROJECT DETAILS
-                </strong>
-
-                <br><br>
-
-                ${
-                    order.projectDetails ||
-                    "No details provided."
-                }
-
-            </div>
-
-
-            <div class="actions">
-
-
-                <button
-                    class="action whatsapp"
-                    onclick="
-                    contactWhatsApp(
-                        '${order.phone || ""}',
-                        '${order.orderId || ""}'
-                    )"
-                >
-                    💬 WhatsApp
-                </button>
-
-
-                <button
-                    class="action progress"
-                    onclick="
-                    changeStatus(
-                        '${order.firebaseId}',
-                        'In Progress'
-                    )"
-                >
-                    🔄 In Progress
-                </button>
-
-
-                <button
-                    class="action complete"
-                    onclick="
-                    changeStatus(
-                        '${order.firebaseId}',
-                        'Completed'
-                    )"
-                >
-                    ✅ Completed
-                </button>
-
-
-                <button
-                    class="action cancel"
-                    onclick="
-                    changeStatus(
-                        '${order.firebaseId}',
-                        'Cancelled'
-                    )"
-                >
-                    ❌ Cancel
-                </button>
-
-
-                <button
-                    class="action delete"
-                    onclick="
-                    deleteOrder(
-                        '${order.firebaseId}'
-                    )"
-                >
-                    🗑️ Delete
-                </button>
-
-            </div>
-
+    <div class="order-card">
+      <div class="oc-top">
+        <div>
+          <div class="oc-name">${o.name} · ${o.phone}</div>
+          <div class="oc-time">${o.ts ? new Date(o.ts).toLocaleString('en-IN') : ''}</div>
         </div>
-
-    `;
-
+        <div class="oc-total">${fmt(o.total)}</div>
+      </div>
+      <div class="oc-items"><b>Items:</b><br>${itemsHtml}${notesHtml}</div>
+      ${filesHtml}
+      <div class="oc-actions">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <span class="status-pill ${o.contacted ? 'done' : 'new'}">${o.contacted ? 'Contacted' : 'New'}</span>
+          <span class="status-pill ${o.progress === 'complete' ? 'done' : 'new'}">${o.progress === 'complete' ? 'Work complete' : 'In progress'}</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+          <a href="${waLink}" target="_blank">Message on WhatsApp</a>
+          <label><input type="checkbox" ${o.contacted ? 'checked' : ''} onchange="toggleContacted('${o.key}', this.checked)"> Mark contacted</label>
+          <button class="progress-btn" onclick='toggleProgress("${o.key}")'>${o.progress === 'complete' ? '↩ Mark incomplete' : '✅ Mark complete'}</button>
+          <button class="delete-btn" onclick='deleteOrder("${o.key}")'>🗑 Delete order</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
 }
 
+function toggleContacted(key, value){
+  firebase.database().ref('orders/' + key + '/contacted').set(value);
+}
 
-/* =========================================
-   CHANGE STATUS
-========================================= */
+function toggleProgress(key){
+  const o = ordersCache[key];
+  if(!o) return;
+  const next = o.progress === 'complete' ? 'incomplete' : 'complete';
+  firebase.database().ref('orders/' + key + '/progress').set(next);
+}
 
-window.changeStatus = async function(
-    firebaseId,
-    newStatus
-){
+async function deleteOrder(key){
+  const order = ordersCache[key];
+  if(!order) return;
+  const sure = confirm(`Delete the order from ${order.name}? This permanently removes it and any attached photos/videos. This can't be undone.`);
+  if(!sure) return;
 
+  // best-effort: remove uploaded files from Storage too, so nothing orphaned sits in your bucket
+  const files = order.files || [];
+  for(const f of files){
+    if(!f.url) continue;
     try{
-
-        await update(
-
-            ref(
-                database,
-                "orders/" + firebaseId
-            ),
-
-            {
-                status:newStatus
-            }
-
-        );
-
+      await firebase.storage().refFromURL(f.url).delete();
+    }catch(e){
+      console.warn('Could not delete file from storage', f.name, e);
     }
+  }
 
-    catch(error){
-
-        console.error(error);
-
-        alert(
-            "Could not update order."
-        );
-
-    }
-
-};
-
-
-/* =========================================
-   DELETE ORDER
-========================================= */
-
-window.deleteOrder = async function(
-    firebaseId
-){
-
-    if(
-        !confirm(
-            "Are you sure you want to delete this order?"
-        )
-    ){
-
-        return;
-
-    }
-
-
-    try{
-
-        await remove(
-
-            ref(
-                database,
-                "orders/" + firebaseId
-            )
-
-        );
-
-    }
-
-    catch(error){
-
-        console.error(error);
-
-        alert(
-            "Could not delete order."
-        );
-
-    }
-
-};
-
-
-/* =========================================
-   WHATSAPP
-========================================= */
-
-window.contactWhatsApp = function(
-    phone,
-    orderId
-){
-
-    if(!phone){
-
-        alert(
-            "Customer phone number is missing."
-        );
-
-        return;
-
-    }
-
-
-    const message =
-        `Hello! This is Mayur Pawar Edits regarding your order ${orderId}.`;
-
-
-    window.open(
-
-        "https://wa.me/91" +
-        phone.replace(/\D/g,"") +
-        "?text=" +
-        encodeURIComponent(message),
-
-        "_blank"
-
-    );
-
-};
-
-
-/* =========================================
-   STATISTICS
-========================================= */
-
-function updateStats(){
-
-    const total =
-        allOrders.length;
-
-
-    const pending =
-        allOrders.filter(
-            o => (o.status || "Pending") === "Pending"
-        ).length;
-
-
-    const progress =
-        allOrders.filter(
-            o => o.status === "In Progress"
-        ).length;
-
-
-    const completed =
-        allOrders.filter(
-            o => o.status === "Completed"
-        ).length;
-
-
-    const sales =
-        allOrders.reduce(
-            (sum,o) =>
-            sum + Number(o.total || 0),
-            0
-        );
-
-
-    document.getElementById(
-        "totalOrders"
-    ).textContent = total;
-
-
-    document.getElementById(
-        "pendingOrders"
-    ).textContent = pending;
-
-
-    document.getElementById(
-        "progressOrders"
-    ).textContent = progress;
-
-
-    document.getElementById(
-        "completedOrders"
-    ).textContent = completed;
-
-
-    document.getElementById(
-        "totalSales"
-    ).textContent = "₹" + sales;
-
+  try{
+    await firebase.database().ref('orders/' + key).remove();
+  }catch(e){
+    alert('Could not delete this order: ' + (e.message || e));
+  }
 }
 
-
-/* =========================================
-   NEW ORDER NOTIFICATION
-========================================= */
-
-function showNewOrder(){
-
-    const notification =
-        document.getElementById(
-            "newOrderNotification"
-        );
-
-
-    notification.style.display =
-        "block";
-
-
-    setTimeout(
-        () => {
-
-            notification.style.display =
-                "none";
-
-        },
-        5000
-    );
-
+function enableNotifications(){
+  if(!('Notification' in window)){ alert('Notifications are not supported on this device.'); return; }
+  Notification.requestPermission();
 }
-
 </script>
-
 </body>
-</html>>
+</html>
